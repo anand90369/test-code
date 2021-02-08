@@ -3,7 +3,16 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  firebaseConfig : {
+    apiKey: 'AIzaSyBcbZ5mBYN2HhVG9m7Y7eaEiCdjwwZHX2Q',
+    authDomain: 'gradsiren-chat.firebaseapp.com',
+    databaseURL: 'https://gradsiren-chat.firebaseio.com',
+    projectId: 'gradsiren-chat',
+    storageBucket: 'gradsiren-chat.appspot.com',
+    messagingSenderId: '18766515452',
+    appId: '1:18766515452:web:227aa9991c93da3259db79'
+  }
 };
 
 /*

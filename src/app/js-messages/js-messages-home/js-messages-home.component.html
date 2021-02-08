@@ -1,0 +1,1096 @@
+<div class="wrapper jsMessages">
+  <div class="container">
+    <div class="row py-3 mainRow">
+      <div class="col-12 col-md-3 bg-white border leftMenu d-none" style="border-top-left-radius: 10px; border-bottom-left-radius: 10px;"
+        [ngClass]="{'displayBlock' : isMobile === false, 'd-block' : (isMobile === true && showMobileChat === false)}" *ngIf="!closeListOnGroupDets && !addContactsToAddGroup">
+        <div class="row border-bottom">
+          <div class="col-12">
+
+            <div class="header" *ngIf="showContacts && !archivedTab">
+              <h6 class="d-flex py-md-3">
+                <button class="border-0 btn btn-sm mt-0 pt-0" (click)="showContacts = false; archivedTab = false; unreadsTab = false; getusersTab()">
+                  <svg viewBox="0 0 24 24" class="mr-2">
+                    <g fill="none" fill-rule="evenodd">
+                      <path d="M0 0h24v24H0z"></path>
+                      <path
+                        d="M9.293 6.293L3.586 12l5.707 5.707 1.414-1.414L7.415 13H20v-2H7.415l3.292-3.293-1.414-1.414z"
+                        fill="currentColor" fill-rule="nonzero"></path>
+                    </g>
+                  </svg>
+                </button> Select a contact
+              </h6>
+            </div>
+
+            <div class="header pl-0" *ngIf="showSettings">
+              <h6 class="d-flex py-md-3">
+                <button class="border-0 btn btn-sm mt-0 pt-0" (click)="showSettings = false">
+                  <svg viewBox="0 0 24 24" class="mr-2">
+                    <g fill="none" fill-rule="evenodd">
+                      <path d="M0 0h24v24H0z"></path>
+                      <path
+                        d="M9.293 6.293L3.586 12l5.707 5.707 1.414-1.414L7.415 13H20v-2H7.415l3.292-3.293-1.414-1.414z"
+                        fill="currentColor" fill-rule="nonzero"></path>
+                    </g>
+                  </svg>
+                </button> Settings
+              </h6>
+            </div>
+
+            <div class="header" *ngIf="(archivedTab && showContacts === false)">
+              <h6 class="d-flex py-md-3">
+                <button class="border-0 btn btn-sm mt-0 pt-0" (click)="showContacts = false; archivedTab = false; unreadsTab = false; initArchive = false; getusersTab()">
+                  <svg viewBox="0 0 24 24" class="mr-2">
+                    <g fill="none" fill-rule="evenodd">
+                      <path d="M0 0h24v24H0z"></path>
+                      <path
+                        d="M9.293 6.293L3.586 12l5.707 5.707 1.414-1.414L7.415 13H20v-2H7.415l3.292-3.293-1.414-1.414z"
+                        fill="currentColor" fill-rule="nonzero"></path>
+                    </g>
+                  </svg>
+                </button> Bookmarked
+              </h6>
+            </div>
+
+            <div class="header" *ngIf="(unreadsTab && showContacts === false)">
+              <h6 class="d-flex py-md-3">
+                <button class="border-0 btn btn-sm mt-0 pt-0" (click)="showContacts = false; archivedTab = false; unreadsTab = false; getusersTab()">
+                  <svg viewBox="0 0 24 24" class="mr-2">
+                    <g fill="none" fill-rule="evenodd">
+                      <path d="M0 0h24v24H0z"></path>
+                      <path
+                        d="M9.293 6.293L3.586 12l5.707 5.707 1.414-1.414L7.415 13H20v-2H7.415l3.292-3.293-1.414-1.414z"
+                        fill="currentColor" fill-rule="nonzero"></path>
+                    </g>
+                  </svg>
+                </button> Unreads
+              </h6>
+            </div>
+
+            <div class="header" style="height: unset; padding: 0px;" *ngIf="!showContacts && !archivedTab && !showSettings && !unreadsTab">
+              <h6 class="d-flex py-2"><span class="align-self-center">Messaging</span>
+                <!-- <svg class="pointer ml-auto" matRipple style="width: 25px; height: 25px;" viewBox="0 0 24 24" (click)="showContacts = true">
+                  <g fill="none" fill-rule="evenodd">
+                    <path d="M0 0h24v24H0z"></path>
+                    <path
+                      d="M12 3v2H5v14h14v-8h2v10H3V3h9zm6.02-1.2l4.243 4.243-9.965 9.965-4.177-.066-.065-4.177L18.02 1.8zm0 2.828l-7.951 7.953.022 1.392 1.392.022 7.952-7.952-1.414-1.415z"
+                      fill="currentColor" fill-rule="nonzero"></path>
+                  </g>
+                </svg> -->
+                 <button class="btn btn-sm ml-auto px-2 rounded-pill smallerFont d-none d-md-block mr-3" style="background-color: #dedede; color: #244357;" (click)="showContacts = true; searchText = '' ">
+                  <svg style="width: 18px; height: 18px;" viewBox="0 0 24 24">
+                    <g fill="none" fill-rule="evenodd">
+                      <path d="M0 0h24v24H0z"></path>
+                      <path
+                        d="M12 3v2H5v14h14v-8h2v10H3V3h9zm6.02-1.2l4.243 4.243-9.965 9.965-4.177-.066-.065-4.177L18.02 1.8zm0 2.828l-7.951 7.953.022 1.392 1.392.022 7.952-7.952-1.414-1.415z"
+                        fill="currentColor" fill-rule="nonzero"></path>
+                    </g>
+                  </svg> New</button>
+
+                  <svg class="align-self-center d-none d-md-block pointer" (click)="showSettings = true" style="width: 25px; height: 25px;" viewBox="0 0 24 24">
+                    <g fill="none" fill-rule="evenodd">
+                      <path d="M0 0h24v24H0z"></path>
+                      <path d="M14.895 2l.296 2.662a7.992 7.992 0 011.567.906l2.455-1.075 2.895 5.014-2.159 1.588a8.076 8.076 0 010 1.81l2.159 1.588-2.895 5.014-2.455-1.075a7.992 7.992 0 01-1.567.906L14.895 22h-5.79l-.296-2.662a7.992 7.992 0 01-1.567-.906l-2.455 1.075-2.895-5.014 2.159-1.588a8.076 8.076 0 010-1.81L1.892 9.507l2.895-5.014 2.455 1.075a7.992 7.992 0 011.567-.906L9.105 2h5.79zm-1.79 2h-2.21l-.235 2.115-.6.205a5.992 5.992 0 00-2.006 1.16l-.478.418-1.952-.855L4.52 8.957l1.715 1.261-.122.622a6.035 6.035 0 000 2.32l.122.622-1.715 1.261 1.105 1.914 1.952-.855.478.418a5.992 5.992 0 002.005 1.16l.601.205.235 2.115h2.21l.235-2.115.6-.205a5.992 5.992 0 002.006-1.16l.478-.418 1.952.855 1.105-1.914-1.715-1.261.122-.622a6.035 6.035 0 000-2.32l-.122-.622 1.715-1.261-1.105-1.914-1.952.855-.478-.418a5.992 5.992 0 00-2.005-1.16l-.601-.205L13.105 4zM12 8a4 4 0 110 8 4 4 0 010-8zm0 2a2 2 0 100 4 2 2 0 000-4z" fill="currentColor" fill-rule="nonzero"></path>
+                    </g>
+                  </svg>
+
+                <span class="ml-auto d-md-none">
+                  <svg class="pointer" (click)="showMobileSearchBox = !showMobileSearchBox" viewBox="0 0 24 24"
+                    style="width: 18px; height: 18px;">
+                    <g fill="none" fill-rule="evenodd">
+                      <path d="M0 0h24v24H0z"></path>
+                      <path
+                        d="M12 2a9 9 0 016.568 15.154l3.089 3.089-1.414 1.414-3.201-3.2A9 9 0 1112 2zm0 2a7 7 0 100 14 7 7 0 000-14z"
+                        fill="currentColor" fill-rule="nonzero"></path>
+                    </g>
+                  </svg>
+
+                  <svg class="ml-2 pointer" style="width: 18px; height: 18px;" viewBox="0 0 24 24"
+                    (click)="showContacts = true">
+                    <g fill="none" fill-rule="evenodd">
+                      <path d="M0 0h24v24H0z"></path>
+                      <path
+                        d="M12 3v2H5v14h14v-8h2v10H3V3h9zm6.02-1.2l4.243 4.243-9.965 9.965-4.177-.066-.065-4.177L18.02 1.8zm0 2.828l-7.951 7.953.022 1.392 1.392.022 7.952-7.952-1.414-1.415z"
+                        fill="currentColor" fill-rule="nonzero"></path>
+                    </g>
+                  </svg>
+
+                  <svg class="ml-2 pointer" (click)="showSettings = true" style="width: 18px; height: 18px;" viewBox="0 0 24 24">
+                    <g fill="none" fill-rule="evenodd">
+                      <path d="M0 0h24v24H0z"></path>
+                      <path d="M14.895 2l.296 2.662a7.992 7.992 0 011.567.906l2.455-1.075 2.895 5.014-2.159 1.588a8.076 8.076 0 010 1.81l2.159 1.588-2.895 5.014-2.455-1.075a7.992 7.992 0 01-1.567.906L14.895 22h-5.79l-.296-2.662a7.992 7.992 0 01-1.567-.906l-2.455 1.075-2.895-5.014 2.159-1.588a8.076 8.076 0 010-1.81L1.892 9.507l2.895-5.014 2.455 1.075a7.992 7.992 0 011.567-.906L9.105 2h5.79zm-1.79 2h-2.21l-.235 2.115-.6.205a5.992 5.992 0 00-2.006 1.16l-.478.418-1.952-.855L4.52 8.957l1.715 1.261-.122.622a6.035 6.035 0 000 2.32l.122.622-1.715 1.261 1.105 1.914 1.952-.855.478.418a5.992 5.992 0 002.005 1.16l.601.205.235 2.115h2.21l.235-2.115.6-.205a5.992 5.992 0 002.006-1.16l.478-.418 1.952.855 1.105-1.914-1.715-1.261.122-.622a6.035 6.035 0 000-2.32l-.122-.622 1.715-1.261-1.105-1.914-1.952.855-.478-.418a5.992 5.992 0 00-2.005-1.16l-.601-.205L13.105 4zM12 8a4 4 0 110 8 4 4 0 010-8zm0 2a2 2 0 100 4 2 2 0 000-4z" fill="currentColor" fill-rule="nonzero"></path>
+                    </g>
+                  </svg>
+
+                </span>
+
+              </h6>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <!-- <div class="col-12 bodyDiv" *ngIf="usersRecentList && usersRecentList.length === 0 && !archivedTab && !showContacts"> -->
+          <div class="col-12 bodyDiv" *ngIf="archivedTab && noArchiveChats && !archiveLoader && !showContacts">
+            <div class="wrapperDiv">
+              <div class="innerWrapperDiv">
+                <div class="contenetWrapperDiv">
+                  <svg class="error-icon-error-icon-errorIcon-20031944" width="17px" height="17px" viewBox="0 0 17 17"
+                    version="1.1">
+                    <defs>
+                      <path
+                        d="M8.5,0 C3.80558398,0 0,3.80558398 0,8.5 C0,13.194416 3.80558398,17 8.5,17 C13.194416,17 17,13.194416 17,8.5 C17,3.80558398 13.194416,0 8.5,0 L8.5,0 Z"
+                        id="path-1"></path>
+                      <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0"
+                        width="17" height="17" fill="white">
+                        <use xlink:href="#path-1"></use>
+                      </mask>
+                    </defs>
+                    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                      <g id="(!)">
+                        <g id="Path">
+                          <polygon fill="currentColor"
+                            points="9.34615385 13.2692308 7.84615385 13.2692308 7.84615385 11.7692308 9.34615385 11.7692308">
+                          </polygon>
+                          <polygon fill="currentColor"
+                            points="7.84615385 3.92307692 9.34615385 3.92307692 9.34615385 10.4230769 7.84615385 10.4230769 7.84615385 3.92307692">
+                          </polygon>
+                          <use stroke="currentColor" mask="url(#mask-2)" stroke-width="2" xlink:href="#path-1"></use>
+                        </g>
+                      </g>
+                    </g>
+                  </svg>
+                  <div class="mt-8">
+                    <h6>You haven't bookmarked any messages yet</h6>
+                    <p>Here you can see the messages you bookmarked.</p>
+                    <!--<p>Connect with friends and colleagues on <strong class="text-gradsuccess">Gradsiren</strong> to
+                      send them messages.</p>-->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!--Unreads-->
+          <div class="col-12 bodyDiv" *ngIf="unreadsTab && noUnreadChats && !unReadLoader && !showContacts">
+            <div class="wrapperDiv">
+              <div class="innerWrapperDiv">
+                <div class="contenetWrapperDiv">
+                  <svg class="error-icon-error-icon-errorIcon-20031944" width="17px" height="17px" viewBox="0 0 17 17"
+                    version="1.1">
+                    <defs>
+                      <path
+                        d="M8.5,0 C3.80558398,0 0,3.80558398 0,8.5 C0,13.194416 3.80558398,17 8.5,17 C13.194416,17 17,13.194416 17,8.5 C17,3.80558398 13.194416,0 8.5,0 L8.5,0 Z"
+                        id="path-1"></path>
+                      <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0"
+                        width="17" height="17" fill="white">
+                        <use xlink:href="#path-1"></use>
+                      </mask>
+                    </defs>
+                    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                      <g id="(!)">
+                        <g id="Path">
+                          <polygon fill="currentColor"
+                            points="9.34615385 13.2692308 7.84615385 13.2692308 7.84615385 11.7692308 9.34615385 11.7692308">
+                          </polygon>
+                          <polygon fill="currentColor"
+                            points="7.84615385 3.92307692 9.34615385 3.92307692 9.34615385 10.4230769 7.84615385 10.4230769 7.84615385 3.92307692">
+                          </polygon>
+                          <use stroke="currentColor" mask="url(#mask-2)" stroke-width="2" xlink:href="#path-1"></use>
+                        </g>
+                      </g>
+                    </g>
+                  </svg>
+                  <div class="mt-8">
+                    <h6>You have no unread messages</h6>
+                    <!-- <p>Here you can see the messages you bookmarked.</p> -->
+                    <!--<p>Connect with friends and colleagues on <strong class="text-gradsuccess">Gradsiren</strong> to
+                      send them messages.</p>-->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="col-12 searchbox" *ngIf="showContacts || (archivedTab && !archiveLoader && !noArchiveChats) || (unreadsTab && !unReadLoader && !noUnreadChats)">
+            <div class="inputWrapper">
+              <svg viewBox="0 0 24 24" width="24" height="24">
+                <g fill="none" fill-rule="evenodd">
+                  <path d="M0 0h24v24H0z"></path>
+                  <path
+                    d="M12 2a9 9 0 016.568 15.154l3.089 3.089-1.414 1.414-3.201-3.2A9 9 0 1112 2zm0 2a7 7 0 100 14 7 7 0 000-14z"
+                    fill="currentColor" fill-rule="nonzero"></path>
+                </g>
+              </svg>
+              <input placeholder="Enter a name" [(ngModel)]="searchText" type="text">
+            </div>
+          </div>
+
+          <div class="col-12 searchbox d-none d-md-block px-md-2" style="height: 50px; padding: 10px 24px; border: 0;" *ngIf="!showContacts && !archivedTab && !showSettings && !unreadsTab"
+            [ngClass]="{'d-block' : showMobileSearchBox}">
+            <div class="">
+              <div class="inputWrapper rounded-0">
+                <svg viewBox="0 0 24 24" width="24" height="24">
+                  <g fill="none" fill-rule="evenodd">
+                    <path d="M0 0h24v24H0z"></path>
+                    <path
+                      d="M12 2a9 9 0 016.568 15.154l3.089 3.089-1.414 1.414-3.201-3.2A9 9 0 1112 2zm0 2a7 7 0 100 14 7 7 0 000-14z"
+                      fill="currentColor" fill-rule="nonzero"></path>
+                  </g>
+                </svg>
+                <input placeholder="Enter a name" [(ngModel)]="searchText" type="text">
+              </div>
+              <div class="align-self-center" style="position: relative; top: -35px; float: right;">
+                <button class="btn btn-sm" [matMenuTriggerFor]="archiveMenu">
+                  <svg style="width: 24px; height: 24px;" viewBox="0 0 24 24"
+                    class="button-ButtonShell-buttonIcon-0aff97a6">
+                    <g fill="none" fill-rule="evenodd">
+                      <path d="M0 0h24v24H0z"></path>
+                      <path
+                        d="M8 16v4H6v-1H3v-2h3v-1h2zm13 1v2H10v-2h11zm-5-7v4h-2v-1H3v-2h11v-1h2zm5 1v2h-3v-2h3zm-9-7v4h-2V7H3V5h7V4h2zm9 1v2h-7V5h7z"
+                        fill="currentColor" fill-rule="nonzero"></path>
+                    </g>
+                  </svg>
+                </button>
+
+                <mat-menu #archiveMenu="matMenu" xPosition="before">
+                <button mat-menu-item (click)="getMutedConversations(); initArchive = true; archivedTab = true; searchText = '' ">Bookmarked</button>
+                  <button mat-menu-item (click)="getUnreadConversations(); unreadsTab = true; searchText = '' ">Unreads</button>
+                </mat-menu>
+
+                <!--<span class="">1</span>-->
+              </div>
+            </div>
+          </div>
+          <div class="col-12 contactsBody px-0" *ngIf="showContacts && !archivedTab && !unreadsTab">
+            <div class="listWrapper">
+              <ul class="pb-5">
+                <!--<li class="letter">
+                  A
+                </li>-->
+                <li class="contact" *ngFor="let newUser of newAllList " (click)="showNewChat(newUser)"
+                  [ngClass]="{'active': (userRoute?.roomId === newUser.id) && (newChatId)}">
+                  <label>
+                    <div class="imageWrapper">
+                      <div class="imgDiv border rounded-circle overflow-hidden">
+                        <img src="assets/img/default-user.png" [title]="newUser.name | titlecase" *ngIf="newUser.profileImage === 'null'">
+                        <img [src]="newUser.profileImage" [title]="newUser.name | titlecase" *ngIf="newUser.profileImage !== 'null'">
+                      </div>
+                      <!-- <span *ngIf="newUser.status" [title]="newUser.status" class="userState"
+                        [ngClass]="{'online' : newUser.status === 'online', 'away' : newUser.status === 'away', 'offline' : newUser.status === 'offline'  }">
+                    </span> -->
+                    </div>
+                    <div class="contentWrapper">
+                      <header class="d-flex">
+                        <h2>{{ newUser.name | titlecase}}</h2>
+                      </header>
+                      <div class="titleContent">
+                        <p>{{ newUser.email }}</p>
+                        <!--<p>Scuola Universitaria Professionale della Svizzera Italiana</p>-->
+                      </div>
+                    </div>
+                    <div class="checkBoxWrapper">
+                      <input type="checkbox">
+                    </div>
+                  </label>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-12 recentContacts px-0" *ngIf="archivedTab && !showContacts && !archiveLoader && !noArchiveChats && !unreadsTab">
+            <div class="listWrapper">
+              <ul class="mb-5" style="opacity: 1;">
+                <li class="" *ngFor="let archivedUser of usersArchiveList " (click)="showChat(archivedUser)"
+                  [ngClass]="{'active': (userRoute?.roomId === archivedUser.id) && (!initArchive)}">
+                  <div class="imageWrapper">
+                    <div class="imgDiv border rounded-circle overflow-hidden">
+                      <img src="assets/img/default-user.png" [title]="archivedUser.mainParticipant?.name | titlecase" *ngIf="archivedUser.mainParticipant?.profilePicture === '' || archivedUser.mainParticipant?.profilePicture === 'null'">
+                      <img [src]="archivedUser.mainParticipant?.profilePicture" [title]="archivedUser.mainParticipant?.name | titlecase" *ngIf="archivedUser.mainParticipant?.profilePicture !== '' || archivedUser.mainParticipant?.profilePicture !== 'null'">
+                    </div>
+                    <span *ngIf="archivedUser.status" [title]="archivedUser.mainParticipant?.status" class="userState"
+                        [ngClass]="{'online' : archivedUser.mainParticipant?.status === 'online', 'away' : archivedUser.mainParticipant?.status === 'away',
+                          'offline' : archivedUser.mainParticipant?.status === 'offline' }">
+                    </span>
+                  </div>
+                  <div class="contactDetailWrapper align-self-center">
+                    <header>
+                      <!-- <span *ngIf="archivedUser.archived === true">
+                        <svg viewBox="0 0 24 24" width="18" height="18">
+                          <title>Bookmarked</title>
+                          <g fill="none" fill-rule="evenodd">
+                            <path d="M0 0h24v24H0z"></path>
+                            <path stroke="currentColor" stroke-width="2" fill="currentColor" d="M6 4.106h12v16l-6-5-6 5z"></path>
+                          </g>
+                        </svg>
+                      </span>-->
+                      <h2 class="text-capitalize" [title]="archivedUser.mainParticipant?.name | titlecase">
+                        {{ archivedUser.mainParticipant?.name | titlecase }}</h2>
+                      <span class="text-black-50">{{ archivedUser.date | rendertime }}</span>
+                    </header>
+                    <div class="recenetMessage">
+                      <span class="messagePreview" *ngIf="!archivedUser.writing">
+                        <span *ngIf="archivedUser.sender !== loggedUserDetails.uid">{{ archivedUser.lastMessage?.message  || 'file' }}</span>
+                        <span *ngIf="archivedUser.sender === loggedUserDetails.uid">You:
+                          {{ archivedUser.lastMessage?.message  || 'file' }}</span>
+                      </span>
+                      <span class="badge badge-pill text-white" style="background-color: #909294;"
+                        *ngIf="archivedUser.unRead !== 0 && (archivedUser.sender !== loggedUserDetails.uid)">{{ archivedUser.unRead }}</span>
+
+                      <p class="chat-user-message text-truncate mb-0 m-0" *ngIf="archivedUser.writing">is typing<span
+                          class="animate-typing">
+                          <span class="dot ml-1"></span>
+                          <span class="dot ml-1"></span>
+                          <span class="dot ml-1"></span>
+                        </span></p>
+                    </div>
+                  </div>
+                </li>
+                <!-- <div role="button"></div> -->
+              </ul>
+            </div>
+          </div>
+
+          <!--UnReads-->
+          <div class="col-12 recentContacts px-0" *ngIf="(unreadsTab && !showContacts && !unReadLoader && !noUnreadChats && !archivedTab)">
+            <div class="listWrapper">
+              <ul class="mb-5" style="opacity: 1;">
+                <li class="" *ngFor="let unReadUser of usersUnreadList " (click)="showChat(unReadUser)"
+                  [ngClass]="{'active': (userRoute?.roomId === unReadUser.id)}">
+                  <div class="imageWrapper">
+                    <div class="imgDiv border rounded-circle overflow-hidden">
+                      <img src="assets/img/default-user.png" [title]="unReadUser.name | titlecase" *ngIf="unReadUser.profilePicture === ''">
+                      <img [src]="unReadUser.profilePicture" [title]="unReadUser.name | titlecase" *ngIf="unReadUser.profilePicture !== ''">
+                    </div>
+                    <span *ngIf="unReadUser.status" [title]="unReadUser.status" class="userState"
+                        [ngClass]="{'online' : unReadUser.status === 'online', 'away' : unReadUser.status === 'away', 'offline' : unReadUser.status === 'offline'  }">
+                    </span>
+                  </div>
+                  <div class="contactDetailWrapper align-self-center">
+                    <header>
+                      <!-- <span *ngIf="unReadUser">
+                        <svg viewBox="0 0 24 24" width="18" height="18">
+                          <title>Unreads</title>
+                          <g fill="none" fill-rule="evenodd">
+                            <path d="M0 0h24v24H0z"></path>
+                            <path stroke="currentColor" stroke-width="2" fill="currentColor" d="M6 4.106h12v16l-6-5-6 5z"></path>
+                          </g>
+                        </svg>
+                      </span> -->
+                      <h2 class="text-capitalize" [title]="unReadUser.name | titlecase">
+                        {{ unReadUser.name | titlecase }}</h2>
+                      <span class="text-black-50">{{ unReadUser.date | rendertime }}</span>
+                    </header>
+                    <div class="recenetMessage">
+                      <span class="messagePreview" *ngIf="!unReadUser.writing">
+                        <span *ngIf="unReadUser.sender !== loggedUserDetails.uid">{{ unReadUser.message }}</span>
+                        <span *ngIf="unReadUser.sender === loggedUserDetails.uid">You:
+                          {{ unReadUser.message }}</span>
+                      </span>
+                      <span class="badge badge-pill text-white" style="background-color: #909294;"
+                        *ngIf="unReadUser.unRead !== 0 && (unReadUser.sender !== loggedUserDetails.uid)">{{ unReadUser.unRead }}</span>
+
+                      <p class="chat-user-message text-truncate mb-0 m-0" *ngIf="unReadUser.writing">is typing<span
+                          class="animate-typing">
+                          <span class="dot ml-1"></span>
+                          <span class="dot ml-1"></span>
+                          <span class="dot ml-1"></span>
+                        </span></p>
+                    </div>
+                  </div>
+                </li>
+                <!-- <div role="button"></div> -->
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-12 recentContacts px-0" *ngIf="!showContacts && !archivedTab && !unreadsTab && usersRecentList && !showSettings && usersRecentList.length !== 0">
+            <div class="listWrapper">
+              <ul class="mb-5" style="opacity: 1;">
+                <li class="" *ngFor="let recentUsers of usersRecentList " (click)="showChat(recentUsers)"
+                  [ngClass]="{'active': recentUsers.selected === true }">
+                  <div class="imageWrapper">
+                    <div class="imgDiv border rounded-circle overflow-hidden">
+                      <img src="assets/img/default-user.png" [title]="recentUsers.name | titlecase"
+                        *ngIf="(recentUsers.profilePicture === ''|| recentUsers.mainParticipant?.profilePicture === 'null') ">
+                      <img [src]="recentUsers.profilePicture || recentUsers.mainParticipant?.profilePicture"
+                        [title]="recentUsers.mainParticipant?.name | titlecase"
+                        *ngIf="(recentUsers.profilePicture !== '' || recentUsers.mainParticipant?.profilePicture !== 'null') ">
+                    </div>
+                    <span *ngIf="recentUsers.mainParticipant?.status" [title]="recentUsers.mainParticipant?.status" class="userState"
+                        [ngClass]="{'online' : recentUsers.mainParticipant?.status === 'online', 'away' : recentUsers.mainParticipant?.status === 'away',
+                         'offline' : recentUsers.mainParticipant?.status === 'offline' }">
+                    </span>
+                  </div>
+
+                  <!--<div class="imageWrapper" *ngIf="recentUsers.profilePicture !== ''">
+                    <div class="imgDiv border rounded-circle">
+                      <img [src]="recentUsers.profilePicture" [title]="recentUsers.name | titlecase">
+                      <span *ngIf="recentUsers.status" [title]="recentUsers.status" class="userState"
+                        [ngClass]="{'online' : recentUsers.status === 'online', 'away' : recentUsers.status === 'away' }">
+                      </span>
+                    </div>
+                  </div>-->
+                  <div class="contactDetailWrapper align-self-center">
+                    <header>
+                      <span class="ml-0 mr-1" *ngIf="recentUsers?.archivedBy.includes(loggedUserDetails.uid)">
+                        <svg viewBox="0 0 24 24" width="18" height="18">
+                          <title>Archived</title>
+                          <g fill="none" fill-rule="evenodd">
+                            <path d="M0 0h24v24H0z"></path>
+                            <path stroke="currentColor" stroke-width="2" fill="currentColor" d="M6 4.106h12v16l-6-5-6 5z"></path>
+                          </g>
+                        </svg>
+                      </span>
+                      <h2 class="bold m-0 text-capitalize" [title]="recentUsers.mainParticipant?.name | titlecase">
+                        {{ recentUsers.mainParticipant?.name | titlecase }}</h2>
+                      <span class="text-black-50">{{ recentUsers.date | rendertime }}</span>
+                    </header>
+                    <div class="recenetMessage">
+                      <span class="messagePreview" *ngIf="!recentUsers.writing">
+                        <span
+                          *ngIf="recentUsers.sender !== loggedUserDetails.uid">{{ getLastMessage(recentUsers.lastMessage) }}</span>
+                        <span *ngIf="recentUsers.sender === loggedUserDetails.uid">You:
+                          {{ recentUsers.lastMessage.message || 'file' }}</span>
+                      </span>
+                      <span class="badge badge-pill text-white" style="background-color: #909294;"
+                        *ngIf="recentUsers.participants[loggedUserDetails.uid].unReadMessages !== 0" >{{ recentUsers.participants[loggedUserDetails.uid].unReadMessages }}</span>
+
+                      <p class="chat-user-message text-truncate mb-0 m-0" *ngIf="recentUsers.writing">is typing<span
+                          class="animate-typing">
+                          <span class="dot ml-1"></span>
+                          <span class="dot ml-1"></span>
+                          <span class="dot ml-1"></span>
+                        </span></p>
+                    </div>
+                  </div>
+                </li>
+                <!-- <div role="button"></div> -->
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-12 recentContacts px-0" *ngIf="showSettings && (!showContacts && !archivedTab && !unreadsTab && usersRecentList && usersRecentList.length !== 0)">
+            <div class="p-3">
+              <p class="bold m-0">Pressing Enter = Send message</p>
+              <div class="d-flex border-bottom">
+                <p class="text-muted smallerFont">Line break: Hold the ⇧ key, then press Enter</p>
+                <!-- <mat-slide-toggle></mat-slide-toggle> -->
+                <label class="align-self-center mb-3 mb-md-0 ml-auto switch" >
+                  <input type="checkbox" id="togBtn" [checked]="sendMsgSetting" (click)="msgOnEnter()">
+                  <div class="slider round">
+                   <!--ADDED HTML -->
+                   <span [ngClass]="{ 'on' : sendMsgSetting === true, 'off' : sendMsgSetting === false }">{{ sendMsgSetting ? 'ON' : 'OFF' }}</span>
+                   <!-- <span class="off">OFF</span> -->
+                   <!--END-->
+                  </div>
+                 </label>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+      <div class="col-12 col-md-6 bg-white border rightBody d-none" style="border-top-right-radius: 10px; border-bottom-right-radius: 10px;"
+        [ngClass]="{'displayBlock' : !isMobile, 'd-block' : isMobile && showMobileChat}">
+        <app-conversations [messages]="messages" [conversation]="conversation" [showContacts]="showContacts" [isMobile]="isMobile"
+          [showMobileChat]="showMobileChat" (onNewMsgSent)="newMsgSentEvent($event)" (onNewContact)="newContact($event)" (onGroupDetails)="groupDetailsEvent($event)"
+          (mobileChat)="showMobileChat = $event" [newChatId]="newChatId" [initArchive]="initArchive" [newReceiver]="newReceiver"
+          [groupSelectedUsers]="groupSelectedUsers" [newGroup]="newGroup" [closeListOnGroupDets]="closeListOnGroupDets" ></app-conversations>
+      </div>
+      <!-- GROUP DETAILS STARTS -->
+      <div class="col-12 col-md-3 bg-white border leftMenu d-none"
+      [ngClass]="{'displayBlock' : isMobile === false, 'd-block' : (isMobile === true && showMobileChat === false)}" *ngIf="closeListOnGroupDets === true">
+      <div class="row border-bottom">
+        <div class="col-12">
+          <div class="header">
+            <h6 class="d-flex py-md-3">
+              <button class="border-0 btn btn-sm mt-0 pt-0" (click)="toggleListOnGD()">
+                <svg viewBox="0 0 24 24" class="mr-2" >
+                  <g fill="none" fill-rule="evenodd">
+                    <path d="M0 0h24v24H0z"></path>
+                    <path
+                      d="M9.293 6.293L3.586 12l5.707 5.707 1.414-1.414L7.415 13H20v-2H7.415l3.292-3.293-1.414-1.414z"
+                      fill="currentColor" fill-rule="nonzero"></path>
+                  </g>
+                </svg>
+              </button> Details
+            </h6>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 px-0">
+          <div class="px-3 pt-3">
+            <label class="font-weight-normal">Group Name</label>
+            <div class="d-flex">
+              <span [attr.contenteditable]="isEditGroupName" id="grpname" [ngClass]="{'border p-2 rounded' : isEditGroupName}" [ngStyle]="{'font-weight' : !isEditGroupName ? '500' : 'normal'}" >{{ conversation?.groupName | titlecase}}</span>
+              <span class="ml-auto align-self-center">
+                <svg *ngIf="isEditGroupName" matRipple [matRippleCentered]='true' class="pointer" viewBox="0 0 24 24" width="24px" height="24px" (click)="closeGroupName(conversation)"><g fill="none" fill-rule="evenodd"><path d="M0 0h24v24H0z"></path><path stroke="currentColor" stroke-width="2" d="M16.95 7.05l-9.9 9.9M16.95 16.95l-9.9-9.9"></path></g></svg>
+                <svg *ngIf="isEditGroupName" (click)="changeGroupName(conversation)" matRipple [matRippleCentered]='true' class="pointer" viewBox="0 0 24 24" width="24px" height="24px"><g fill="none" fill-rule="evenodd"><path d="M0 0h24v24H0z"></path><path fill="currentColor" fill-rule="nonzero" d="M10.176 14.232l-4.115-4.115-1.415 1.414 5.53 5.53 9.707-9.707-1.414-1.415z"></path></g></svg>
+                <svg *ngIf="!isEditGroupName" matRipple [matRippleCentered]='true' class="pointer" viewBox="0 0 24 24" width="24px" height="24px" (click)="isEditGroupName = !isEditGroupName">
+                  <g fill="none" fill-rule="evenodd">
+                    <path d="M0 0h24v24H0z"></path>
+                    <path d="M14.998 3l3.998 4-9.998 10.008H5.011v-3.996L14.998 3zM15 5.83l-7.99 8.008v1.17h1.16L16.169 7l-1.17-1.17zM19 18v2H5v-2z" fill="currentColor" fill-rule="nonzero"></path>
+                  </g>
+                </svg>
+              </span>
+            </div>
+            <p class="d-flex text-muted my-3">In this group <span class="ml-auto">{{ conversation?.participants_uid.length }} of 100</span></p>
+          </div>
+          <div matRipple [matRippleCentered]='true' *ngIf="conversation['uid'] === this.loggedUserDetails['uid']" class="border-bottom border-top d-flex p-3 pointer" (click)="openContactsToAdd(conversation)" >
+            <span>
+              <svg viewBox="0 0 24 24" width="24px" height="24px"><g fill="none" fill-rule="evenodd"><path d="M0 0h24v24H0z"></path><path d="M10.217 15C13.729 15 16 18.416 16 21h-2c0-.46-.344-1.515-.88-2.321C12.404 17.604 11.451 17 10.216 17H7.783c-1.235 0-2.188.604-2.902 1.679C4.344 19.485 4 20.539 4 21H2c0-2.584 2.27-6 5.783-6zM20 10.002v1.999h1.999v2H20V16h-2v-1.999h-1.999v-2H18v-1.999h2zM9 3a5 5 0 110 10A5 5 0 019 3zm0 2a3 3 0 100 6 3 3 0 000-6z" fill="currentColor" fill-rule="nonzero"></path></g></svg>
+            </span>
+            <span class="align-self-center ml-3">
+              Add contacts
+            </span>
+          </div>
+        </div>
+
+        <div class="col-12 recentContacts groupMembers px-0">
+          <div class="listWrapper">
+            <ul class="mb-5" style="opacity: 1;">
+              <li class="" *ngFor="let groupUser of inGroupList" >
+                <div class="imageWrapper">
+                  <div class="imgDiv border rounded-circle overflow-hidden">
+                    <img src="assets/img/default-user.png" *ngIf="groupUser.profilePicture === 'null' || groupUser.profilePicture === '' " >
+                    <img [src]="groupUser.profilePicture" *ngIf="groupUser.profilePicture !== 'null' ">
+                  </div>
+                  <!-- <span class="userState online"></span> -->
+                </div>
+
+                  <div style="width: 225px;">
+                    <h6 class="my-0 fw_500">{{ groupUser.name | titlecase }}</h6>
+                    <p class="my-0 smallerFont text-muted">Degree</p>
+                    <p class="my-0 smallerFont text-muted" style="white-space: nowrap; text-overflow: ellipsis;
+                    overflow: hidden;">Scuola Universitaria</p>
+                  </div>
+                <div class="align-self-center" *ngIf="groupUser.isAdmin === true" >
+                  <p class="smallerFont fw_500">Admin</p>
+                </div>
+                <div class="align-self-center" *ngIf="groupUser.isAdmin === false">
+                  <p class="smallerFont fw_500">
+                    <svg viewBox="0 0 24 24" width="24px" height="24px" (click)="removeUser(groupUser, conversation)" >
+                      <g fill="none" fill-rule="evenodd">
+                        <path d="M0 0h24v24H0z"></path>
+                        <path d="M5 5h15v2h-1v15H5V6.999L4 7V5h1zm2 2v13h10V7H7zm4 2v9H9V9h2zm4 0v9h-2V9h2zm-1-7v2h-4V2h4z" fill="currentColor" fill-rule="nonzero"></path>
+                      </g>
+                    </svg>
+                  </p>
+                </div>
+              </li>
+
+              <!--<li class="">
+                <div class="imageWrapper">
+                  <div class="imgDiv border rounded-circle overflow-hidden">
+                    <img src="assets/img/default-user.png">
+                  </div>
+                  <!-- <span class="userState online"></span> --
+                </div>
+
+                  <div style="width: 225px;">
+                    <h6 class="my-0 fw_500">Contact Name</h6>
+                    <p class="my-0 smallerFont text-muted">Degree</p>
+                    <p class="my-0 smallerFont text-muted" style="white-space: nowrap; text-overflow: ellipsis; overflow: hidden;">Scuola Universitaria Professionale della Svizzera Italiana</p>
+                  </div>
+                <div class="align-self-center">
+                  <p class="smallerFont fw_500">
+                    <svg viewBox="0 0 24 24" width="24px" height="24px">
+                      <g fill="none" fill-rule="evenodd">
+                        <path d="M0 0h24v24H0z"></path>
+                        <path d="M5 5h15v2h-1v15H5V6.999L4 7V5h1zm2 2v13h10V7H7zm4 2v9H9V9h2zm4 0v9h-2V9h2zm-1-7v2h-4V2h4z" fill="currentColor" fill-rule="nonzero"></path>
+                      </g>
+                    </svg>
+                  </p>
+                </div>
+              </li>
+              <li class="">
+                <div class="imageWrapper">
+                  <div class="imgDiv border rounded-circle overflow-hidden">
+                    <img src="assets/img/default-user.png">
+                  </div>
+                  <!-- <span class="userState online"></span> --
+                </div>
+
+                  <div style="width: 225px;">
+                    <h6 class="my-0 fw_500">Contact Name</h6>
+                    <p class="my-0 smallerFont text-muted">Degree</p>
+                    <p class="my-0 smallerFont text-muted" style="white-space: nowrap; text-overflow: ellipsis; overflow: hidden;">Scuola Universitaria Professionale della Svizzera Italiana</p>
+                  </div>
+                <div class="align-self-center">
+                  <p class="smallerFont fw_500">
+                    <svg viewBox="0 0 24 24" width="24px" height="24px">
+                      <g fill="none" fill-rule="evenodd">
+                        <path d="M0 0h24v24H0z"></path>
+                        <path d="M5 5h15v2h-1v15H5V6.999L4 7V5h1zm2 2v13h10V7H7zm4 2v9H9V9h2zm4 0v9h-2V9h2zm-1-7v2h-4V2h4z" fill="currentColor" fill-rule="nonzero"></path>
+                      </g>
+                    </svg>
+                  </p>
+                </div>
+              </li>
+              <li class="">
+                <div class="imageWrapper">
+                  <div class="imgDiv border rounded-circle overflow-hidden">
+                    <img src="assets/img/default-user.png">
+                  </div>
+                  <!-- <span class="userState online"></span> --
+                </div>
+
+                  <div style="width: 225px;">
+                    <h6 class="my-0 fw_500">Contact Name</h6>
+                    <p class="my-0 smallerFont text-muted">Degree</p>
+                    <p class="my-0 smallerFont text-muted" style="white-space: nowrap; text-overflow: ellipsis; overflow: hidden;">Scuola Universitaria Professionale della Svizzera Italiana</p>
+                  </div>
+                <div class="align-self-center">
+                  <p class="smallerFont fw_500">
+                    <svg viewBox="0 0 24 24" width="24px" height="24px">
+                      <g fill="none" fill-rule="evenodd">
+                        <path d="M0 0h24v24H0z"></path>
+                        <path d="M5 5h15v2h-1v15H5V6.999L4 7V5h1zm2 2v13h10V7H7zm4 2v9H9V9h2zm4 0v9h-2V9h2zm-1-7v2h-4V2h4z" fill="currentColor" fill-rule="nonzero"></path>
+                      </g>
+                    </svg>
+                  </p>
+                </div>
+              </li>
+              <li class="">
+                <div class="imageWrapper">
+                  <div class="imgDiv border rounded-circle overflow-hidden">
+                    <img src="assets/img/default-user.png">
+                  </div>
+                  <!-- <span class="userState online"></span> --
+                </div>
+
+                  <div style="width: 225px;">
+                    <h6 class="my-0 fw_500">Contact Name</h6>
+                    <p class="my-0 smallerFont text-muted">Degree</p>
+                    <p class="my-0 smallerFont text-muted" style="white-space: nowrap; text-overflow: ellipsis; overflow: hidden;">Scuola Universitaria Professionale della Svizzera Italiana</p>
+                  </div>
+                <div class="align-self-center">
+                  <p class="smallerFont fw_500">
+                    <svg viewBox="0 0 24 24" width="24px" height="24px">
+                      <g fill="none" fill-rule="evenodd">
+                        <path d="M0 0h24v24H0z"></path>
+                        <path d="M5 5h15v2h-1v15H5V6.999L4 7V5h1zm2 2v13h10V7H7zm4 2v9H9V9h2zm4 0v9h-2V9h2zm-1-7v2h-4V2h4z" fill="currentColor" fill-rule="nonzero"></path>
+                      </g>
+                    </svg>
+                  </p>
+                </div>
+              </li>
+              <li class="">
+                <div class="imageWrapper">
+                  <div class="imgDiv border rounded-circle overflow-hidden">
+                    <img src="assets/img/default-user.png">
+                  </div>
+                  <!-- <span class="userState online"></span> --
+                </div>
+
+                  <div style="width: 225px;">
+                    <h6 class="my-0 fw_500">Contact Name</h6>
+                    <p class="my-0 smallerFont text-muted">Degree</p>
+                    <p class="my-0 smallerFont text-muted" style="white-space: nowrap; text-overflow: ellipsis; overflow: hidden;">Scuola Universitaria Professionale della Svizzera Italiana</p>
+                  </div>
+                <div class="align-self-center">
+                  <p class="smallerFont fw_500">
+                    <svg viewBox="0 0 24 24" width="24px" height="24px">
+                      <g fill="none" fill-rule="evenodd">
+                        <path d="M0 0h24v24H0z"></path>
+                        <path d="M5 5h15v2h-1v15H5V6.999L4 7V5h1zm2 2v13h10V7H7zm4 2v9H9V9h2zm4 0v9h-2V9h2zm-1-7v2h-4V2h4z" fill="currentColor" fill-rule="nonzero"></path>
+                      </g>
+                    </svg>
+                  </p>
+                </div>
+              </li>
+              <li class="">
+                <div class="imageWrapper">
+                  <div class="imgDiv border rounded-circle overflow-hidden">
+                    <img src="assets/img/default-user.png">
+                  </div>
+                  <!-- <span class="userState online"></span> --
+                </div>
+
+                  <div style="width: 225px;">
+                    <h6 class="my-0 fw_500">Contact Name</h6>
+                    <p class="my-0 smallerFont text-muted">Degree</p>
+                    <p class="my-0 smallerFont text-muted" style="white-space: nowrap; text-overflow: ellipsis; overflow: hidden;">Scuola Universitaria Professionale della Svizzera Italiana</p>
+                  </div>
+                <div class="align-self-center">
+                  <p class="smallerFont fw_500">
+                    <svg viewBox="0 0 24 24" width="24px" height="24px">
+                      <g fill="none" fill-rule="evenodd">
+                        <path d="M0 0h24v24H0z"></path>
+                        <path d="M5 5h15v2h-1v15H5V6.999L4 7V5h1zm2 2v13h10V7H7zm4 2v9H9V9h2zm4 0v9h-2V9h2zm-1-7v2h-4V2h4z" fill="currentColor" fill-rule="nonzero"></path>
+                      </g>
+                    </svg>
+                  </p>
+                </div>
+              </li>
+              <li class="">
+                <div class="imageWrapper">
+                  <div class="imgDiv border rounded-circle overflow-hidden">
+                    <img src="assets/img/default-user.png">
+                  </div>
+                  <!-- <span class="userState online"></span> --
+                </div>
+
+                  <div style="width: 225px;">
+                    <h6 class="my-0 fw_500">Contact Name</h6>
+                    <p class="my-0 smallerFont text-muted">Degree</p>
+                    <p class="my-0 smallerFont text-muted" style="white-space: nowrap; text-overflow: ellipsis; overflow: hidden;">Scuola Universitaria Professionale della Svizzera Italiana</p>
+                  </div>
+                <div class="align-self-center">
+                  <p class="smallerFont fw_500">
+                    <svg viewBox="0 0 24 24" width="24px" height="24px">
+                      <g fill="none" fill-rule="evenodd">
+                        <path d="M0 0h24v24H0z"></path>
+                        <path d="M5 5h15v2h-1v15H5V6.999L4 7V5h1zm2 2v13h10V7H7zm4 2v9H9V9h2zm4 0v9h-2V9h2zm-1-7v2h-4V2h4z" fill="currentColor" fill-rule="nonzero"></path>
+                      </g>
+                    </svg>
+                  </p>
+                </div>
+              </li>
+              <li class="">
+                <div class="imageWrapper">
+                  <div class="imgDiv border rounded-circle overflow-hidden">
+                    <img src="assets/img/default-user.png">
+                  </div>
+                  <!-- <span class="userState online"></span> --
+                </div>
+
+                  <div style="width: 225px;">
+                    <h6 class="my-0 fw_500">Contact Name</h6>
+                    <p class="my-0 smallerFont text-muted">Degree</p>
+                    <p class="my-0 smallerFont text-muted" style="white-space: nowrap; text-overflow: ellipsis; overflow: hidden;">Scuola Universitaria Professionale della Svizzera Italiana</p>
+                  </div>
+                <div class="align-self-center">
+                  <p class="smallerFont fw_500">
+                    <svg viewBox="0 0 24 24" width="24px" height="24px">
+                      <g fill="none" fill-rule="evenodd">
+                        <path d="M0 0h24v24H0z"></path>
+                        <path d="M5 5h15v2h-1v15H5V6.999L4 7V5h1zm2 2v13h10V7H7zm4 2v9H9V9h2zm4 0v9h-2V9h2zm-1-7v2h-4V2h4z" fill="currentColor" fill-rule="nonzero"></path>
+                      </g>
+                    </svg>
+                  </p>
+                </div>
+              </li>
+              <li class="">
+                <div class="imageWrapper">
+                  <div class="imgDiv border rounded-circle overflow-hidden">
+                    <img src="assets/img/default-user.png">
+                  </div>
+                  <!-- <span class="userState online"></span> --
+                </div>
+
+                  <div style="width: 225px;">
+                    <h6 class="my-0 fw_500">Contact Name</h6>
+                    <p class="my-0 smallerFont text-muted">Degree</p>
+                    <p class="my-0 smallerFont text-muted" style="white-space: nowrap; text-overflow: ellipsis; overflow: hidden;">Scuola Universitaria Professionale della Svizzera Italiana</p>
+                  </div>
+                <div class="align-self-center">
+                  <p class="smallerFont fw_500">
+                    <svg viewBox="0 0 24 24" width="24px" height="24px">
+                      <g fill="none" fill-rule="evenodd">
+                        <path d="M0 0h24v24H0z"></path>
+                        <path d="M5 5h15v2h-1v15H5V6.999L4 7V5h1zm2 2v13h10V7H7zm4 2v9H9V9h2zm4 0v9h-2V9h2zm-1-7v2h-4V2h4z" fill="currentColor" fill-rule="nonzero"></path>
+                      </g>
+                    </svg>
+                  </p>
+                </div>
+              </li>
+              <li class="">
+                <div class="imageWrapper">
+                  <div class="imgDiv border rounded-circle overflow-hidden">
+                    <img src="assets/img/default-user.png">
+                  </div>
+                  <!-- <span class="userState online"></span> --
+                </div>
+
+                  <div style="width: 225px;">
+                    <h6 class="my-0 fw_500">Contact Name</h6>
+                    <p class="my-0 smallerFont text-muted">Degree</p>
+                    <p class="my-0 smallerFont text-muted" style="white-space: nowrap; text-overflow: ellipsis; overflow: hidden;">Scuola Universitaria Professionale della Svizzera Italiana</p>
+                  </div>
+                <div class="align-self-center">
+                  <p class="smallerFont fw_500">
+                    <svg viewBox="0 0 24 24" width="24px" height="24px">
+                      <g fill="none" fill-rule="evenodd">
+                        <path d="M0 0h24v24H0z"></path>
+                        <path d="M5 5h15v2h-1v15H5V6.999L4 7V5h1zm2 2v13h10V7H7zm4 2v9H9V9h2zm4 0v9h-2V9h2zm-1-7v2h-4V2h4z" fill="currentColor" fill-rule="nonzero"></path>
+                      </g>
+                    </svg>
+                  </p>
+                </div>
+              </li>
+              <li class="">
+                <div class="imageWrapper">
+                  <div class="imgDiv border rounded-circle overflow-hidden">
+                    <img src="assets/img/default-user.png">
+                  </div>
+                  <!-- <span class="userState online"></span> --
+                </div>
+
+                  <div style="width: 225px;">
+                    <h6 class="my-0 fw_500">Contact Name</h6>
+                    <p class="my-0 smallerFont text-muted">Degree</p>
+                    <p class="my-0 smallerFont text-muted" style="white-space: nowrap; text-overflow: ellipsis; overflow: hidden;">Scuola Universitaria Professionale della Svizzera Italiana</p>
+                  </div>
+                <div class="align-self-center">
+                  <p class="smallerFont fw_500">
+                    <svg viewBox="0 0 24 24" width="24px" height="24px">
+                      <g fill="none" fill-rule="evenodd">
+                        <path d="M0 0h24v24H0z"></path>
+                        <path d="M5 5h15v2h-1v15H5V6.999L4 7V5h1zm2 2v13h10V7H7zm4 2v9H9V9h2zm4 0v9h-2V9h2zm-1-7v2h-4V2h4z" fill="currentColor" fill-rule="nonzero"></path>
+                      </g>
+                    </svg>
+                  </p>
+                </div>
+              </li>
+              <li class="">
+                <div class="imageWrapper">
+                  <div class="imgDiv border rounded-circle overflow-hidden">
+                    <img src="assets/img/default-user.png">
+                  </div>
+                  <!-- <span class="userState online"></span> --
+                </div>
+
+                  <div style="width: 225px;">
+                    <h6 class="my-0 fw_500">Contact Name</h6>
+                    <p class="my-0 smallerFont text-muted">Degree</p>
+                    <p class="my-0 smallerFont text-muted" style="white-space: nowrap; text-overflow: ellipsis; overflow: hidden;">Scuola Universitaria Professionale della Svizzera Italiana</p>
+                  </div>
+                <div class="align-self-center">
+                  <p class="smallerFont fw_500">
+                    <svg viewBox="0 0 24 24" width="24px" height="24px">
+                      <g fill="none" fill-rule="evenodd">
+                        <path d="M0 0h24v24H0z"></path>
+                        <path d="M5 5h15v2h-1v15H5V6.999L4 7V5h1zm2 2v13h10V7H7zm4 2v9H9V9h2zm4 0v9h-2V9h2zm-1-7v2h-4V2h4z" fill="currentColor" fill-rule="nonzero"></path>
+                      </g>
+                    </svg>
+                  </p>
+                </div>
+              </li>
+              <li class="">
+                <div class="imageWrapper">
+                  <div class="imgDiv border rounded-circle overflow-hidden">
+                    <img src="assets/img/default-user.png">
+                  </div>
+                  <!-- <span class="userState online"></span> --
+                </div>
+
+                  <div style="width: 225px;">
+                    <h6 class="my-0 fw_500">Contact Name</h6>
+                    <p class="my-0 smallerFont text-muted">Degree</p>
+                    <p class="my-0 smallerFont text-muted" style="white-space: nowrap; text-overflow: ellipsis; overflow: hidden;">Scuola Universitaria Professionale della Svizzera Italiana</p>
+                  </div>
+                <div class="align-self-center">
+                  <p class="smallerFont fw_500">
+                    <svg viewBox="0 0 24 24" width="24px" height="24px">
+                      <g fill="none" fill-rule="evenodd">
+                        <path d="M0 0h24v24H0z"></path>
+                        <path d="M5 5h15v2h-1v15H5V6.999L4 7V5h1zm2 2v13h10V7H7zm4 2v9H9V9h2zm4 0v9h-2V9h2zm-1-7v2h-4V2h4z" fill="currentColor" fill-rule="nonzero"></path>
+                      </g>
+                    </svg>
+                  </p>
+                </div>
+              </li>
+              <li class="">
+                <div class="imageWrapper">
+                  <div class="imgDiv border rounded-circle overflow-hidden">
+                    <img src="assets/img/default-user.png">
+                  </div>
+                  <!-- <span class="userState online"></span> --
+                </div>
+
+                  <div style="width: 225px;">
+                    <h6 class="my-0 fw_500">Contact Name</h6>
+                    <p class="my-0 smallerFont text-muted">Degree</p>
+                    <p class="my-0 smallerFont text-muted" style="white-space: nowrap; text-overflow: ellipsis; overflow: hidden;">Scuola Universitaria Professionale della Svizzera Italiana</p>
+                  </div>
+                <div class="align-self-center">
+                  <p class="smallerFont fw_500">
+                    <svg viewBox="0 0 24 24" width="24px" height="24px">
+                      <g fill="none" fill-rule="evenodd">
+                        <path d="M0 0h24v24H0z"></path>
+                        <path d="M5 5h15v2h-1v15H5V6.999L4 7V5h1zm2 2v13h10V7H7zm4 2v9H9V9h2zm4 0v9h-2V9h2zm-1-7v2h-4V2h4z" fill="currentColor" fill-rule="nonzero"></path>
+                      </g>
+                    </svg>
+                  </p>
+                </div>
+              </li>
+              <li class="">
+                <div class="imageWrapper">
+                  <div class="imgDiv border rounded-circle overflow-hidden">
+                    <img src="assets/img/default-user.png">
+                  </div>
+                  <!-- <span class="userState online"></span> --
+                </div>
+
+                  <div style="width: 225px;">
+                    <h6 class="my-0 fw_500">Contact Name</h6>
+                    <p class="my-0 smallerFont text-muted">Degree</p>
+                    <p class="my-0 smallerFont text-muted" style="white-space: nowrap; text-overflow: ellipsis; overflow: hidden;">Scuola Universitaria Professionale della Svizzera Italiana</p>
+                  </div>
+                <div class="align-self-center">
+                  <p class="smallerFont fw_500">
+                    <svg viewBox="0 0 24 24" width="24px" height="24px">
+                      <g fill="none" fill-rule="evenodd">
+                        <path d="M0 0h24v24H0z"></path>
+                        <path d="M5 5h15v2h-1v15H5V6.999L4 7V5h1zm2 2v13h10V7H7zm4 2v9H9V9h2zm4 0v9h-2V9h2zm-1-7v2h-4V2h4z" fill="currentColor" fill-rule="nonzero"></path>
+                      </g>
+                    </svg>
+                  </p>
+                </div>
+              </li>
+              <li class="">
+                <div class="imageWrapper">
+                  <div class="imgDiv border rounded-circle overflow-hidden">
+                    <img src="assets/img/default-user.png">
+                  </div>
+                  <!-- <span class="userState online"></span> --
+                </div>
+
+                  <div style="width: 225px;">
+                    <h6 class="my-0 fw_500">Contact Name</h6>
+                    <p class="my-0 smallerFont text-muted">Degree</p>
+                    <p class="my-0 smallerFont text-muted" style="white-space: nowrap; text-overflow: ellipsis; overflow: hidden;">Scuola Universitaria Professionale della Svizzera Italiana</p>
+                  </div>
+                <div class="align-self-center">
+                  <p class="smallerFont fw_500">
+                    <svg viewBox="0 0 24 24" width="24px" height="24px">
+                      <g fill="none" fill-rule="evenodd">
+                        <path d="M0 0h24v24H0z"></path>
+                        <path d="M5 5h15v2h-1v15H5V6.999L4 7V5h1zm2 2v13h10V7H7zm4 2v9H9V9h2zm4 0v9h-2V9h2zm-1-7v2h-4V2h4z" fill="currentColor" fill-rule="nonzero"></path>
+                      </g>
+                    </svg>
+                  </p>
+                </div>
+              </li>
+              <li class="">
+                <div class="imageWrapper">
+                  <div class="imgDiv border rounded-circle overflow-hidden">
+                    <img src="assets/img/default-user.png">
+                  </div>
+                  <!-- <span class="userState online"></span> --
+                </div>
+
+                  <div style="width: 225px;">
+                    <h6 class="my-0 fw_500">Contact Name</h6>
+                    <p class="my-0 smallerFont text-muted">Degree</p>
+                    <p class="my-0 smallerFont text-muted" style="white-space: nowrap; text-overflow: ellipsis; overflow: hidden;">Scuola Universitaria Professionale della Svizzera Italiana</p>
+                  </div>
+                <div class="align-self-center">
+                  <p class="smallerFont fw_500">
+                    <svg viewBox="0 0 24 24" width="24px" height="24px">
+                      <g fill="none" fill-rule="evenodd">
+                        <path d="M0 0h24v24H0z"></path>
+                        <path d="M5 5h15v2h-1v15H5V6.999L4 7V5h1zm2 2v13h10V7H7zm4 2v9H9V9h2zm4 0v9h-2V9h2zm-1-7v2h-4V2h4z" fill="currentColor" fill-rule="nonzero"></path>
+                      </g>
+                    </svg>
+                  </p>
+                </div>
+              </li> -->
+
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-md-4 bg-white border leftMenu d-none"
+      [ngClass]="{'displayBlock' : isMobile === false, 'd-block' : (isMobile === true && showMobileChat === false)}" *ngIf="!closeListOnGroupDets && addContactsToAddGroup">
+      <div class="row border-bottom">
+        <div class="col-12">
+          <div class="header">
+            <h6 class="d-flex py-md-3">
+              <button class="border-0 btn btn-sm mt-0 pt-0" (click)="toggleToGD()">
+                <svg viewBox="0 0 24 24" class="mr-2" >
+                  <g fill="none" fill-rule="evenodd">
+                    <path d="M0 0h24v24H0z"></path>
+                    <path
+                      d="M9.293 6.293L3.586 12l5.707 5.707 1.414-1.414L7.415 13H20v-2H7.415l3.292-3.293-1.414-1.414z"
+                      fill="currentColor" fill-rule="nonzero"></path>
+                  </g>
+                </svg>
+              </button> Select Contact
+            </h6>
+          </div>
+        </div>
+      </div>
+      <div class="row border-bottom">
+        <div class="col-12">
+          <div class="header">
+            <h6 class="d-flex py-md-3">
+              <!-- <button class="border-0 btn btn-sm mt-0 pt-0" (click)="toggleToGD()">
+                <svg viewBox="0 0 24 24" class="mr-2" >
+                  <g fill="none" fill-rule="evenodd">
+                    <path d="M0 0h24v24H0z"></path>
+                    <path
+                      d="M9.293 6.293L3.586 12l5.707 5.707 1.414-1.414L7.415 13H20v-2H7.415l3.292-3.293-1.414-1.414z"
+                      fill="currentColor" fill-rule="nonzero"></path>
+                  </g>
+                </svg>
+              </button> Select Contact -->
+              <input placeholder="Enter a name" [(ngModel)]="searchText" type="text">
+            </h6>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+
+        <div class="col-12 recentContacts groupMembers px-0">
+          <div class="listWrapper">
+            <ul class="mb-5" style="opacity: 1;">
+              <li class="" *ngFor="let newGrpUser of addcontactList " (click)="addUser(newGrpUser)" >
+                <div class="imageWrapper">
+                  <div class="imgDiv border rounded-circle overflow-hidden">
+                    <img src="assets/img/default-user.png" *ngIf="newGrpUser.profileImage === 'null' || newGrpUser.profileImage === '' " >
+                    <img [src]="newGrpUser.profileImage" *ngIf="newGrpUser.profileImage !== 'null' ">
+                  </div>
+                  <!-- <span class="userState online"></span> -->
+                </div>
+
+                  <div style="width: 225px;">
+                    <h6 class="my-0 fw_500">{{ newGrpUser.name | titlecase }}</h6>
+                    <p class="my-0 smallerFont text-muted">{{ newGrpUser.email }}</p>
+                    <!-- <p class="my-0 smallerFont text-muted" style="white-space: nowrap; text-overflow: ellipsis;
+                    overflow: hidden;">Scuola Universitaria Professionale della Svizzera Italiana</p> -->
+                  </div>
+                <!-- <div class="align-self-center" *ngIf="groupUser.isAdmin === true" >
+                  <p class="smallerFont fw_500">Admin</p>
+                </div> -->
+                <!-- <div class="checkBoxWrapper">
+                  <input type="checkbox"> -->
+                  <!-- <p class="smallerFont fw_500">
+                    <svg viewBox="0 0 24 24" width="24px" height="24px" >
+                      <g fill="none" fill-rule="evenodd">
+                        <path d="M0 0h24v24H0z"></path>
+                        <path d="M5 5h15v2h-1v15H5V6.999L4 7V5h1zm2 2v13h10V7H7zm4 2v9H9V9h2zm4 0v9h-2V9h2zm-1-7v2h-4V2h4z" fill="currentColor" fill-rule="nonzero"></path>
+                      </g>
+                    </svg>
+                  </p> -->
+                <!-- </div> -->
+              </li>
+
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- GROUP DETAILS ENDS -->
+
+    <!-- SIDEBANNERS STARTS -->
+    <div class="col-md-3 col-12">
+      <div class="card shadow-none" style="border-radius: 10px;">
+        <div class="card-body">
+          <h5 class="blue bold m-0 tc">Grow your network</h5>
+          <p class="tc m-0 text-muted"><small>by inviting your contacts</small></p>
+          <div class="tc">
+            <img class="img-fluid" src="assets/img/jobseeker/chatright.jpg">
+            <button class="border btn btn-block btn-light mt-2 rounded-pill text-primary">Invite</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- SIDEBANNERS ENDS -->
+    </div>
+  </div>
+</div>

@@ -1,0 +1,1149 @@
+<!--<div class="card border-0 rounded-0 shadow-sm">
+
+      <app-conversation-header *ngIf="room && chatInfo" [chatInfo]="chatInfo"></app-conversation-header>
+
+       <div class="card-body chatBody" #scrollMe [scrollTop]="scrollMe.scrollHeight">
+
+        <!-- <div class="row mb-3">   *ngIf="(!showComposeNewMessage && !showNewGroupMessage) && (showSingleChatWindow || showGroupChatWindow)"
+          <div class="col-12 d-flex incommingMsg">
+            <div class="imgDIV align-self-end">
+              <img class="rounded-circle img-fluid"
+                src="https://lh3.googleusercontent.com/-Y22OBJqaZr4/AAAAAAAAAAI/AAAAAAAACQM/uZ24DN30KhsuRA2yeuyB3S8R26F_slhWwCLcDEAE/s32-c-k-no-mo">
+            </div>
+            <div class="ml-2">
+              <div class="d-flex">
+                <div class="mr-2 msgDiv">
+                  <p class="my-0">Good Morning.</p>
+                  <p class="my-0 text-right"><small><i class="fa fa-clock-o" aria-hidden="true"></i> 10:00</small>
+                  </p>
+                </div>
+                <span class="text-muted pointer" [matMenuTriggerFor]="leftMenu"><i class="fa fa-ellipsis-v"
+                    aria-hidden="true"></i></span>
+                <mat-menu class="customMatMenuPanel left" #leftMenu="matMenu" xPosition="after" yPosition="below">
+                  <button mat-menu-item>Copy</button>
+                  <button mat-menu-item>Delete</button>
+                </mat-menu>
+              </div>
+              <p class="mt-2 pt-1">Dorisn Brown</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <div class="col-12 d-flex incommingMsg outgoingMsg">
+            <div class="mr-2">
+              <div class="d-flex">
+                <span class="text-muted pointer" [matMenuTriggerFor]="rightMenu"><i class="fa fa-ellipsis-v"
+                    aria-hidden="true"></i></span>
+                <mat-menu class="customMatMenuPanel right" #rightMenu="matMenu" xPosition="before"
+                  yPosition="below">
+                  <button mat-menu-item>Copy</button>
+                  <button mat-menu-item>Delete</button>
+                </mat-menu>
+                <div class="ml-2 msgDiv">
+                  <p class="my-0"> Good morning, How are you? What about our next meeting? </p>
+                  <p class="my-0 text-left"><small><i class="fa fa-clock-o" aria-hidden="true"></i> 10:00</small>
+                  </p>
+                </div>
+              </div>
+              <p class="mt-2 pt-1 text-right">Dorisn Brown</p>
+            </div>
+            <div class="imgDIV align-self-end">
+              <img class="rounded-circle img-fluid"
+                src="https://lh3.googleusercontent.com/-Y22OBJqaZr4/AAAAAAAAAAI/AAAAAAAACQM/uZ24DN30KhsuRA2yeuyB3S8R26F_slhWwCLcDEAE/s32-c-k-no-mo">
+            </div>
+          </div>
+        </div>
+
+        <div class="row mb-3 dayChange">
+          <div class="col-12 text-center">
+            <hr>
+            <span>Today</span>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <div class="col-12 d-flex incommingMsg">
+            <div class="imgDIV align-self-end">
+              <!-- <img class="rounded-circle img-fluid"
+                src="https://lh3.googleusercontent.com/-Y22OBJqaZr4/AAAAAAAAAAI/AAAAAAAACQM/uZ24DN30KhsuRA2yeuyB3S8R26F_slhWwCLcDEAE/s32-c-k-no-mo">
+            </div>
+            <div class="ml-2">
+              <div class="d-flex">
+                <div class="mr-2 msgDiv">
+                  <p class="my-0"> Yeah everything is fine </p>
+                  <p class="my-0 text-right"><small><i class="fa fa-clock-o" aria-hidden="true"></i> 10:00</small>
+                  </p>
+                </div>
+                <span class="text-muted"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <div class="col-12 d-flex incommingMsg">
+            <div class="imgDIV align-self-end">
+              <img class="rounded-circle img-fluid"
+                src="https://lh3.googleusercontent.com/-Y22OBJqaZr4/AAAAAAAAAAI/AAAAAAAACQM/uZ24DN30KhsuRA2yeuyB3S8R26F_slhWwCLcDEAE/s32-c-k-no-mo">
+            </div>
+            <div class="ml-2">
+              <div class="d-flex">
+                <div class="mr-2 msgDiv">
+                  <p class="my-0"> & Next meeting tomorrow 10.00AM </p>
+                  <p class="my-0 text-right"><small><i class="fa fa-clock-o" aria-hidden="true"></i> 10:00</small>
+                  </p>
+                </div>
+                <span class="text-muted"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></span>
+              </div>
+              <p class="mt-2 pt-1">Dorisn Brown</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <div class="col-12 d-flex incommingMsg outgoingMsg">
+            <div class="mr-2">
+              <div class="d-flex">
+                <span class="text-muted"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></span>
+                <div class="ml-2 msgDiv">
+                  <p class="my-0"> Wow that's great </p>
+                  <p class="my-0 text-left"><small><i class="fa fa-clock-o" aria-hidden="true"></i> 10:00</small>
+                  </p>
+                </div>
+              </div>
+              <p class="mt-2 pt-1 text-right">Dorisn Brown</p>
+            </div>
+            <div class="imgDIV align-self-end">
+              <img class="rounded-circle img-fluid"
+                src="https://lh3.googleusercontent.com/-Y22OBJqaZr4/AAAAAAAAAAI/AAAAAAAACQM/uZ24DN30KhsuRA2yeuyB3S8R26F_slhWwCLcDEAE/s32-c-k-no-mo">
+            </div>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <div class="col-12 d-flex incommingMsg">
+            <div class="imgDIV align-self-end">
+              <img class="rounded-circle img-fluid"
+                src="https://lh3.googleusercontent.com/-Y22OBJqaZr4/AAAAAAAAAAI/AAAAAAAACQM/uZ24DN30KhsuRA2yeuyB3S8R26F_slhWwCLcDEAE/s32-c-k-no-mo">
+            </div>
+            <div class="ml-2">
+              <div class="d-flex">
+                <div class="mr-2 msgDiv">
+                  <div class="row no-gutters">
+                    <div class="col-3">
+                      <img class="img-fluid img-thumbnail"
+                        src="https://lh3.googleusercontent.com/-Y22OBJqaZr4/AAAAAAAAAAI/AAAAAAAACQM/uZ24DN30KhsuRA2yeuyB3S8R26F_slhWwCLcDEAE/s32-c-k-no-mo">
+                      <div class="imgOptions">
+                        <i class="fa fa-download mr-3" aria-hidden="true"></i>
+                        <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
+                      </div>
+                    </div>
+                    <div class="col-3">
+                      <img class="img-fluid img-thumbnail"
+                        src="https://lh3.googleusercontent.com/-Y22OBJqaZr4/AAAAAAAAAAI/AAAAAAAACQM/uZ24DN30KhsuRA2yeuyB3S8R26F_slhWwCLcDEAE/s32-c-k-no-mo">
+                      <div class="imgOptions">
+                        <i class="fa fa-download mr-2" aria-hidden="true"></i>
+                        <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
+                      </div>
+                    </div>
+                    <div class="col-3">
+                      <img class="img-fluid img-thumbnail"
+                        src="https://lh3.googleusercontent.com/-Y22OBJqaZr4/AAAAAAAAAAI/AAAAAAAACQM/uZ24DN30KhsuRA2yeuyB3S8R26F_slhWwCLcDEAE/s32-c-k-no-mo">
+                      <div class="imgOptions">
+                        <i class="fa fa-download mr-2" aria-hidden="true"></i>
+                        <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
+                      </div>
+                    </div>
+                    <div class="col-3">
+                      <img class="img-fluid img-thumbnail"
+                        src="https://lh3.googleusercontent.com/-Y22OBJqaZr4/AAAAAAAAAAI/AAAAAAAACQM/uZ24DN30KhsuRA2yeuyB3S8R26F_slhWwCLcDEAE/s32-c-k-no-mo">
+                      <div class="imgOptions">
+                        <i class="fa fa-download mr-2" aria-hidden="true"></i>
+                        <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <p class="my-0 text-right"><small><i class="fa fa-clock-o" aria-hidden="true"></i> 10:00</small>
+                  </p>
+                </div>
+                <span class="text-muted"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></span>
+              </div>
+              <p class="mt-2 pt-1">Dorisn Brown</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <div class="col-12 d-flex incommingMsg outgoingMsg">
+            <div class="mr-2">
+              <div class="d-flex">
+                <span class="text-muted"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></span>
+                <div class="ml-2 msgDiv">
+                  <div class="alert alert-light mb-2">
+                    <div class="d-flex">
+                      <div class="alert alert-info mb-0">
+                        <i class="fa fa-lg fa-file-text-o text-primary" aria-hidden="true"></i>
+                      </div>
+                      <div class="d-flex">
+                        <div class="align-self-center mx-3">
+                          <h5 class="my-0">admin_v1.0.zip</h5>
+                          <small class="my-0 text-left text-muted float-left">12.5 MB</small>
+                        </div>
+                        <div class="align-self-center">
+                          <i class="fa fa-download mr-2" aria-hidden="true"></i>
+                          <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <p class="my-0 text-left"><small><i class="fa fa-clock-o" aria-hidden="true"></i> 10:00</small>
+                  </p>
+                </div>
+              </div>
+              <p class="mt-2 pt-1 text-right">Dorisn Brown</p>
+            </div>
+            <div class="imgDIV align-self-end">
+              <img class="rounded-circle img-fluid"
+                src="https://lh3.googleusercontent.com/-Y22OBJqaZr4/AAAAAAAAAAI/AAAAAAAACQM/uZ24DN30KhsuRA2yeuyB3S8R26F_slhWwCLcDEAE/s32-c-k-no-mo">
+            </div>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <div class="col-12 d-flex incommingMsg">
+            <div class="imgDIV align-self-end">
+              <img class="rounded-circle img-fluid"
+                src="https://lh3.googleusercontent.com/-Y22OBJqaZr4/AAAAAAAAAAI/AAAAAAAACQM/uZ24DN30KhsuRA2yeuyB3S8R26F_slhWwCLcDEAE/s32-c-k-no-mo">
+            </div>
+            <div class="ml-2">
+              <div class="d-flex">
+                <div class="mr-2 msgDiv">
+                  <p class="my-0"> Typing
+                    <span class="animate-typing">
+                      <span class="dot ml-1"></span>
+                      <span class="dot ml-1"></span>
+                      <span class="dot ml-1"></span>
+                    </span>
+                  </p>
+                </div>
+                <span class="text-muted"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></span>
+              </div>
+              <p class="mt-2 pt-1">Dorisn Brown</p>
+            </div>
+          </div>
+        </div>
+
+      [ngClass]="{'outgoingMsg': data.align === 'right'}"
+      -->
+
+<!--<ul *ngIf="selectedRoomUserData || selectedRoomData" class="list-unstyled mb-0">
+          <li *ngFor="let data of messagesList; let last = last; let index = index" id="scroll-{{index}}"
+          >
+            <div class="conversation-list" *ngIf="!last" [ngClass]="msgClass(data.createdBy)">
+
+              <div class="imgDIV align-self-end" *ngIf="data.user.profileImage !== 'null'">
+                 <img class="rounded-circle img-fluid" src="{{data.user.profileImage}}" alt="">
+              </div>
+              <div class="imgDIV align-self-end" *ngIf="data.user.profileImage === 'null'">
+                <span class="firstLetter text-uppercase badge badge-pill text-primary">
+                  {{ (data.user.name).charAt(0) | titlecase }}</span>
+             </div>
+
+              <div class="ml-2">
+                <div class="d-flex">
+                  <div class="mr-2 msgDiv">
+                    <div *ngIf="data.forwardedTo" class="span badge badge-warning">{{ data.repliedTo | slice: 0 : 5 }}</div>
+                    <!--<div *ngIf="data.forwardedTo" class="span badge badge-warning">
+                      {{data.repliedTo | slice: 0 : 5}}</div> -->
+<!--<p class="my-0">
+                      {{data.message }}
+                      <span class="animate-typing" *ngIf="data.istyping">
+                        <span class="dot ml-1"></span>
+                        <span class="dot ml-1"></span>
+                        <span class="dot ml-1"></span>
+                      </span>
+                    </p> -->
+
+<!-- Image List -->
+<!--<ul class="list-inline message-img mb-0" *ngIf="data.files">
+                      <li class="list-inline-item message-img-list" *ngFor="let file of data.files"
+                      [ngClass]="{'d-none': file.type.split('/')[0] !== 'image'}">
+                        <div>
+                          <a class="popup-img d-inline-block m-1" target="_blank" [href]="file.file" title="file.file">
+                            <img :src="{{file.file}}" height="150" alt="" class="rounded border">
+                          </a>
+                        </div>
+                        <div class="message-img-link">
+                          <ul class="list-inline mb-0">
+                            <li class="list-inline-item">
+                              <a target="_blank" [href]="data.fileUrl">
+                                <i class="ri-download-2-line"></i>
+                              </a>
+                            </li>
+                            <li class="list-inline-item dropdown" ngbDropdown>
+                              <a class="dropdown-toggle" role="button" ngbDropdownToggle
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="ri-more-fill"></i>
+                              </a>
+                              <div class="dropdown-menu" ngbDropdownMenu>
+                                <a class="dropdown-item" >Copy <i
+                                    class="ri-file-copy-line float-right text-muted"></i></a>
+                                <a class="dropdown-item" [href]="data.fileUrl">Save <i
+                                    class="ri-save-line float-right text-muted"></i></a>
+                              </div>
+                            </li>
+                          </ul>
+                        </div>
+                      </li>
+                    </ul> -->
+<!-- File Div-->
+
+<!--<div class="card p-2 mb-2" *ngFor="let file of data.files" [ngClass]="{'d-none': file.type.split('/')[0] === 'image'}">
+                      <div class="media align-items-center">
+                        <div class="avatar-sm mr-3">
+                          <div class="avatar-title bg-soft-primary text-primary rounded font-size-20">
+                            <i class="ri-file-text-fill"></i>
+                          </div>
+                        </div>
+                        <div class="alert alert-light mb-2">
+                          <div class="d-flex">
+                            <div class="alert alert-info mb-0">
+                              <i class="fa fa-lg fa-file-text-o text-primary" aria-hidden="true"></i>
+                            </div>
+                            <div class="d-flex">
+                              <div class="align-self-center mx-3">
+                                <h5 class="my-0">{{ file.name }}</h5>
+                                <small class="my-0 text-left text-muted float-left">{{file.size}}</small>
+                              </div>
+                              <div class="align-self-center">
+                                <i class="fa fa-download mr-2" aria-hidden="true"></i>
+                                <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
+                              </div>
+                            </div>
+                          </div>
+                        </div> -->
+
+
+<!--<div class="media-body">
+                          <div class="text-left">
+                            <h5 class="font-size-14 mb-1">{{data.name}}</h5>
+                            <p class="text-muted font-size-13 mb-0">{{data.size}}</p>
+                          </div>
+                        </div>
+
+                        <!-- <div class="ml-4">
+                          <ul class="list-inline mb-0 font-size-20">
+                            <li class="list-inline-item">
+                              <a href="#" class="text-muted">
+                                <i class="ri-download-2-line"></i>
+                              </a>
+                            </li>
+                            <li class="list-inline-item dropdown" ngbDropdown>
+                              <a class="dropdown-toggle text-muted" [href]="data.fileUrl" ngbDropdownToggle role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="ri-more-fill"></i>
+                              </a>
+                              <div class="dropdown-menu dropdown-menu-right" ngbDropdownMenu>
+                                <a class="dropdown-item" href="#">Share
+                                  <i class="ri-share-line float-right text-muted"></i></a>
+                                <a class="dropdown-item" href="#">Delete
+                                  <i class="ri-delete-bin-line float-right text-muted"></i></a>
+                              </div>
+                            </li>
+                          </ul>
+                        </div> --
+                      </div>
+                    </div>-->
+
+<!-- Time
+                    <p class="my-0 text-right"><small><i class="fa fa-clock-o"
+                          aria-hidden="true"></i>{{data.timestamp | date : 'shortTime'}}</small>
+                    </p> -->
+<!-- <p class="my-0 text-right" *ngIf="!data.istyping"><i class="fa fa-clock-o" aria-hidden="true"></i> <span
+                        class="align-middle">{{data.timestamp | date : 'shortTime'}}</span></p> -->
+<!--<p class="my-0 text-right" *ngIf="!data.istyping">
+                        <i class="fa fa-clock-o"
+                        aria-hidden="true"></i> <span class="align-middle">
+                          {{(data.createdAt.seconds | amFromUnix) | amTimeAgo }}
+                          </span>
+                      </p>
+                  </div>
+                  <span class="text-muted pointer" [matMenuTriggerFor]="rightMenu"><i class="fa fa-ellipsis-v"
+                    aria-hidden="true"></i></span>
+                <mat-menu class="customMatMenuPanel right" #rightMenu="matMenu" xPosition="before"
+                  yPosition="below">
+                  <button mat-menu-item ngxClipboard [cbContent]="data.message" style="cursor: pointer;">Copy</button>
+                  <button mat-menu-item style="cursor: pointer;" (click)="forwardMsg(data)">Forward</button>
+                  <button mat-menu-item style="cursor: pointer;" (click)="deleteMsg(data.id)">Delete</button>
+                </mat-menu> -->
+
+<!--<span class="text-muted pointer" [matMenuTriggerFor]="rightMenu" *ngIf="data.files"><i class="fa fa-ellipsis-v"
+                  aria-hidden="true"></i></span>
+                  <mat-menu class="customMatMenuPanel right" #rightMenu="matMenu" xPosition="before"
+                    yPosition="below" *ngIf="data.files">
+                    <button mat-menu-item style="cursor: pointer;">Save</button>
+                    <button mat-menu-item style="cursor: pointer;" (click)="forwardMsg(data)">Forward</button>
+                    <button mat-menu-item style="cursor: pointer;" (click)="deleteMsg(data.id)">Delete</button>
+                  </mat-menu> -->
+
+<!--<div class="dropdown align-self-start" ngbDropdown>
+                    <a class="dropdown-toggle" role="button" ngbDropdownToggle data-toggle="dropdown"
+                      aria-haspopup="true" aria-expanded="false">
+                      <i class="ri-more-2-fill"></i>
+                    </a>
+                    <div class="dropdown-menu" ngbDropdownMenu>
+                      <a class="dropdown-item" ngxClipboard [cbContent]="data.message" style="cursor: pointer;">Copy <i
+                          class="ri-file-copy-line float-right text-muted"></i></a>
+                      <a class="dropdown-item" style="cursor: pointer;" (click)="forwardMsg(data)">Forward<i
+                          class="ri-chat-forward-line float-right text-muted"></i></a>
+                      <a class="dropdown-item" style="cursor: pointer;" (click)="deleteMsg(data.id)">Delete <i
+                        class="ri-delete-bin-line float-right text-muted"></i></a>
+                    </div>
+                  </div> -->
+
+<!--</div>-->
+<!-- <div class="ctext-wrap" *ngIf="data.message2">
+                  <div class="ctext-wrap-content">
+                    <p class="my-0">
+                      {{data.message2 }}
+                    </p>
+                    <p class="chat-time mb-0"><i class="ri-time-line align-middle"></i> <span
+                        class="align-middle">{{data.time | date : 'shortTime'}}</span></p>
+                  </div>
+                  <div class="dropdown align-self-start" ngbDropdown>
+                    <a class="dropdown-toggle" href="#" role="button" ngbDropdownToggle data-toggle="dropdown"
+                      aria-haspopup="true" aria-expanded="false">
+                      <i class="ri-more-2-fill"></i>
+                    </a>
+                    <div class="dropdown-menu" ngbDropdownMenu>
+                      <a class="dropdown-item" href="#">Copy <i
+                          class="ri-file-copy-line float-right text-muted"></i></a>
+                      <a class="dropdown-item" href="#">Save <i
+                          class="ri-save-line float-right text-muted"></i></a>
+                    </div>
+                  </div>
+                </div> -->
+
+<!--<p class="mt-2 pt-1">{{data.user.name }}</p>
+              </div> -->
+
+
+<!--<div class="row mb-3" *ngFor="let data of messages; let last = last; let index = index">
+                <app-conversation-message (forwardMessage)="forwardMessage($event)" [message]="data"></app-conversation-message>
+
+
+              </div> -->
+
+<!--Typing-->
+<!--<div class="row mb-3" *ngIf="user.isTyping === true">
+                <div class="col-12 d-flex incommingMsg">
+                  <div class="imgDIV align-self-end">
+                    <img class="rounded-circle img-fluid"
+                      src="https://lh3.googleusercontent.com/-Y22OBJqaZr4/AAAAAAAAAAI/AAAAAAAACQM/uZ24DN30KhsuRA2yeuyB3S8R26F_slhWwCLcDEAE/s32-c-k-no-mo">
+                  </div>
+                  <div class="ml-2">
+                    <div class="d-flex">
+                      <div class="mr-2 msgDiv">
+                        <p class="my-0"> Typing
+                          <span class="animate-typing">
+                            <span class="dot ml-1"></span>
+                            <span class="dot ml-1"></span>
+                            <span class="dot ml-1"></span>
+                          </span>
+                        </p>
+                      </div>
+                      <span class="text-muted"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></span>
+                    </div>
+                    <p class="mt-2 pt-1">Dorisn Brown</p>
+                  </div>
+                </div>
+              </div> -->
+
+<!--<div class="row mb-3">
+                <div class="col-12 d-flex incommingMsg outgoingMsg">
+                  <div class="mr-2">
+                    <div class="d-flex">
+                      <span class="text-muted"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></span>
+                      <div class="ml-2 msgDiv">
+                        <p class="my-0"> Wow that's great </p>
+                        <p class="my-0 text-left"><small><i class="fa fa-clock-o" aria-hidden="true"></i> 10:00</small>
+                        </p>
+                      </div>
+                    </div>
+                    <p class="mt-2 pt-1 text-right">Dorisn Brown</p>
+                  </div>
+                  <div class="imgDIV align-self-end">
+                    <img class="rounded-circle img-fluid"
+                      src="https://lh3.googleusercontent.com/-Y22OBJqaZr4/AAAAAAAAAAI/AAAAAAAACQM/uZ24DN30KhsuRA2yeuyB3S8R26F_slhWwCLcDEAE/s32-c-k-no-mo">
+                  </div>
+                </div>
+              </div>-->
+<!-- </div> -->
+
+<!--  <div class="chat-day-title" *ngIf="data.isToday">
+              <span class="title">Today</span>
+            </div> --
+
+            <div class="row mb-3 dayChange" *ngIf="data.isToday">
+              <div class="col-12 text-center">
+                <hr>
+                <span>Today</span>
+              </div>
+            </div> -->
+
+<!--</li> -->
+
+<!--<li *ngIf="selectedRoomData && selectedRoomData.writing && (selectedRoomData.writing.length > 0) && (selectedRoomData.writing.indexOf(this.loggedUserDetails.uid) === -1)">
+            <div class="conversation-list" *ngIf="!last">
+              <!-- <div class="chat-avatar">
+                <img src="{{data.user.profileImage}}" alt="">
+              </div>  --
+
+              <div class="user-chat-content">
+                <div class="ctext-wrap">
+                  <div class="ctext-wrap-content">
+                    <p class="mb-0">
+                      <!-- {{data.message}} --
+                      <span class="animate-typing">
+                        <span class="dot ml-1"></span>
+                        <span class="dot ml-1"></span>
+                        <span class="dot ml-1"></span>
+                      </span>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>--
+
+      </div>-->
+
+<!-- end chat conversation end -->
+
+<!-- start chat input section --
+
+      <div class="card-footer bg-white">
+
+        <form (submit)="sendMsg()">
+          <div class="d-flex">
+            <div class="input-group  input-group-lg col-9">
+              <!-- <input type="text" class="bg-light border-0 form-control rounded-lg" placeholder="Enter Message..."
+                style="font-size: 16px;"> (keyup)='sendMessage($event)'     (keyup)='typingFunc($event)'--
+              <div class="form-group w-100 has-search mb-0">
+                <!--<a *ngIf="forwardMsg">Replying to {{ forwardMsg.message | slice: 0 : 10 }}...</a>--
+
+                <p *ngIf="forwardMsg" class="text-left mt-3">
+                  "{{ forwardMsg.message | slice: 0 : 10 }}"</p>
+                  <!--<small *ngIf="forwardMsg" class="text-left"> {{ forwardMsg['sentBy'] }}, {{forwardMsg['time'] }}</small>
+                  <hr *ngIf="forwardMsg">-->
+
+<!-- <input type="text" class="form-control pl-3" placeholder="Enter Message..."
+                (focus)="toggleWriting(true)" (blur)="toggleWriting(false)" (click)="makeAsRead()"
+                  [(ngModel)]="typeMessage" [ngModelOptions]="{standalone: true}" (keyup.enter)='sendMessage()'> --
+                  <textarea row="1" style="height: 40px; resize: none;" class="form-control pl-3" placeholder="Enter Message..."
+                  [(ngModel)]="typeMessage" [ngModelOptions]="{standalone: true}" >
+                  </textarea>
+              </div>
+            </div>
+            <div id="emojiWrapper" *ngIf="toggleEmoji" class="d-block position-absolute" style="right: -50px; bottom: 50px;">
+              <emoji-mart title="Pick your emoji…" (emojiSelect)="emojiSelect($event)" emoji="point_up"></emoji-mart>
+            </div>
+            <!--<div class="align-self-center col-2">
+              <button id="toggleEmoji" (click)="toggleEmoji = !toggleEmoji" type="button" class="btn btn-link text-decoration-none font-size-16 btn-lg waves-effect"
+                  data-toggle="tooltip" data-placement="top" ngbTooltip="Emoji">
+                  <i class="ri-emotion-happy-line"></i>
+                </button>
+            </div> --
+
+            <div class="align-self-center col-3" >
+
+              <!--<button id="toggleEmoji" (click)="toggleEmoji = !toggleEmoji" type="button" class="btn btn-link text-decoration-none font-size-16 btn-lg waves-effect"
+                  data-toggle="tooltip" data-placement="top"> -->
+
+<!--</button> -->
+
+<!-- <button type="button">--
+                  <label class="d-inline mr-3" for="validatedCustomFile">
+                    <i class="fa fa-lg fa-paperclip pointer" style="vertical-align: 10%;"></i>
+                  </label>
+                  <input multiple type="file" class="custom-file-input d-none" id="validatedCustomFile" >
+              <!--</button>
+                <input multiple type="file" style="display: none;"
+                (change)="uploadFile($event)" >
+                <i class="fa fa-lg fa-paperclip mr-3 pointer" aria-hidden="true"></i> --
+                <span>
+                  <span class="material-icons pointer" style="width: 40px;"
+                  id="toggleEmoji" (click)="toggleEmojiFn()">
+                  sentiment_satisfied_alt
+                </span>
+                </span>
+              <!--  <i class="fa fa-lg fa-paperclip mr-3" aria-hidden="true"></i> -->
+
+<!-- <span class="alert alert-primary bg-primary material-icons mb-0 p-1 text-white"
+                style="font-size: 20px;" (click)="sendMessage()" style="cursor: pointer;">
+                send
+              </span> --
+              <span class="send-btn" (click)="sendMsg()">Send</span>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div> -->
+
+
+
+
+
+
+
+
+
+    <div class="row border-bottom">
+      <div class="col-12" *ngIf="(!reciever || (showContacts && !newChatId)) && groupSelectedUsers.length === 0">
+        <div class="headerWrapper">
+          <div class="loaderDiv d-flex w-100 align-items-center">
+            <div class="imgShadow"></div>
+            <div class="align-items-center" style="flex: 1 1 auto;">
+              <div class="mt-0" style="width: 141px; height: 12px; background-color: #e9eef0;"></div>
+              <div style="width: 163px; height: 12px; margin-top: 6px; background-color: #e9eef0;"></div>
+              <div style="width: 121px; height: 12px; margin-top: 6px; background-color: #e9eef0;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 userDetails" *ngIf="(reciever || groupSelectedUsers.length !== 0)">
+        <header class="px-0">
+          <div class="userDetailWrapper" *ngIf="(chatInfo?.isGroupChat === false || newReceiver) && !grouping" >
+            <div class="headerContent">
+              <svg width="24px" height="24px" viewBox="0 0 24 24" class="mr-2 pointer d-md-none"
+                (click)="[mobileChat.emit(showMobileChat = !showMobileChat)]">
+                <g fill="none" fill-rule="evenodd">
+                  <path d="M0 0h24v24H0z"></path>
+                  <path d="M9.293 6.293L3.586 12l5.707 5.707 1.414-1.414L7.415 13H20v-2H7.415l3.292-3.293-1.414-1.414z"
+                    fill="currentColor" fill-rule="nonzero"></path>
+                </g>
+              </svg>
+
+              <div class="imageWrapper">
+                <div class="imgDiv border rounded-circle overflow-hidden">
+                  <!--<img src="assets/img/default-user.png" [title]="reciever?.name | titlecase"
+                    *ngIf="reciever.profileImage === 'null'">
+                  <img [src]="reciever.profileImage" [title]="reciever?.name | titlecase"
+                    *ngIf="reciever.profileImage !== 'null'">-->
+                    <img src="assets/img/default-user.png" [title]="reciever?.name | titlecase"
+                    *ngIf="reciever.profilePicture === 'null' || reciever.profileImage === 'null' ">
+                  <img [src]="reciever.profilePicture || reciever.profileImage" [title]="reciever?.name | titlecase"
+                    *ngIf="reciever.profilePicture !== 'null' || reciever.profileImage !== 'null'">
+                </div>
+              </div>
+              <span class="userState" style="bottom: 13px; left: 35px;"
+              [title]="reciever?.status" *ngIf="reciever"
+              [ngClass]="{'online' : reciever?.status === 'online', 'away' : reciever?.status === 'away', 'offline' : reciever?.status === 'offline' }">
+              </span>
+              <!--<div class="imageWrapper" >
+                    <div class="imgDiv">
+
+                    </div>
+                  </div>-->
+              <div class="userContent" [ngClass]="!( basicUserDetails?.map.userBasicDetailsVos.length !== 0 && basicUserDetails?.map.userBasicDetailsVos[0].designationOrDegreeName && basicUserDetails?.map.userBasicDetailsVos[0].companyOrUniversityName) ? 'align-self-center' : ''" [style.height]="( basicUserDetails?.map.userBasicDetailsVos.length !== 0 && basicUserDetails?.map.userBasicDetailsVos[0].designationOrDegreeName && basicUserDetails?.map.userBasicDetailsVos[0].companyOrUniversityName) ? '55px' : 'unset'">
+                <h2 class="mt-0"><a class="bold" (click)="getPublicUrl()">
+                  {{ reciever?.name | titlecase}}
+                </a>
+                  <!-- <span class="align-self-center ml-2 mt-1 d-inline-block userStateMain" *ngIf="reciever"
+                    [title]="reciever?.status"
+                    [ngClass]="{'online' : reciever?.status === 'online', 'away' : reciever?.status === 'away' }"></span> -->
+                </h2>
+                <p class="text-capitalize" style="font-size: small;">{{ basicUserDetails?.map.userBasicDetailsVos.length !== 0 ? basicUserDetails?.map.userBasicDetailsVos[0].designationOrDegreeName : null }}</p>
+                <p style="font-size: smaller;">
+                  <span>{{ basicUserDetails?.map.userBasicDetailsVos.length !== 0 ? basicUserDetails?.map.userBasicDetailsVos[0].companyOrUniversityName : null }}</span>
+                </p>
+              </div>
+              <div class="userContentActions" *ngIf="chatInfo">
+                <svg viewBox="0 0 24 24" (click)="archiveChat()" *ngIf="!chatInfo?.archivedBy?.includes(sender.uid)">
+                  <title>Bookmark</title>
+                  <g fill="none" fill-rule="evenodd">
+                    <path d="M0 0h24v24H0z"></path>
+                    <path stroke="currentColor" stroke-width="2" d="M6 4.106h12v16l-6-5-6 5z"></path>
+                  </g>
+                </svg>
+                <svg viewBox="0 0 24 24" (click)="unArchiveChat()" *ngIf="chatInfo?.archivedBy?.includes(sender.uid)">
+                  <!-- <title>Unarchive</title> -->
+                  <g fill="none" fill-rule="evenodd">
+                    <path d="M0 0h24v24H0z"></path>
+                    <path stroke="currentColor" stroke-width="2" fill="currentColor" d="M6 4.106h12v16l-6-5-6 5z"></path>
+                  </g>
+                </svg>
+                <svg viewBox="0 0 24 24" (click)="openDeleteConfirmWindow(deleteConfirmModal)">
+                  <title>Delete Chat</title>
+                  <g fill="none" fill-rule="evenodd">
+                    <path d="M0 0h24v24H0z"></path>
+                    <path d="M5 5h15v2h-1v15H5V6.999L4 7V5h1zm2 2v13h10V7H7zm4 2v9H9V9h2zm4 0v9h-2V9h2zm-1-7v2h-4V2h4z"
+                      fill="currentColor" fill-rule="nonzero"></path>
+                  </g>
+                </svg>
+
+                <ng-template #deleteConfirmModal>
+                  <div class="modal-body">
+                    <p class="font-weight-bold">Delete this chat?</p>
+                    <p>If you delete this conversation, all of the messages there will be permanently deleted. Really
+                      delete?</p>
+                    <div class="mt-4 tr">
+                      <button type="button" class="btn btn-sm btn-default" (click)="deleteChat()">Delete</button>
+                      <button type="button" class="btn btn-sm btn-primary" (click)="modalRef.hide()">Cancel</button>
+                    </div>
+                  </div>
+                </ng-template>
+
+                <!--<svg viewBox="0 0 24 24" [matMenuTriggerFor]="reportMenu">
+                      <g fill="none" fill-rule="evenodd">
+                        <path d="M0 0h24v24H0z"></path>
+                        <path d="M5 10a2 2 0 110 4 2 2 0 010-4zm14 0a2 2 0 110 4 2 2 0 010-4zm-7 0a2 2 0 110 4 2 2 0 010-4z"
+                          fill="currentColor" fill-rule="nonzero"></path>
+                      </g>
+                    </svg>
+
+                    <mat-menu #reportMenu="matMenu" xPosition="before">
+                      <button mat-menu-item>Report as spam or misuse</button>
+                    </mat-menu>-->
+
+              </div>
+            </div>
+          </div>
+
+          <div class="userDetailWrapper" *ngIf="(chatInfo?.isGroupChat === true || grouping) && !newReceiver " >
+            <div class="headerContent">
+              <svg width="24px" height="24px" viewBox="0 0 24 24" class="mr-2 pointer d-md-none"
+                (click)="[mobileChat.emit(showMobileChat = !showMobileChat)]">
+                <g fill="none" fill-rule="evenodd">
+                  <path d="M0 0h24v24H0z"></path>
+                  <path d="M9.293 6.293L3.586 12l5.707 5.707 1.414-1.414L7.415 13H20v-2H7.415l3.292-3.293-1.414-1.414z"
+                    fill="currentColor" fill-rule="nonzero"></path>
+                </g>
+              </svg>
+
+              <div class="imageWrapper">
+                <div class="imgDiv border rounded-circle overflow-hidden">
+                  <img src="assets/img/default-user.png" [title]="reciever?.name | titlecase">
+                  <!--<img [src]="reciever.profileImage" [title]="reciever?.name | titlecase"
+                    *ngIf="reciever.profileImage !== 'null'">-->
+                </div>
+              </div>
+              <!-- <div class="userContent" [style.height]="unset" (click)="toggleGroupDetails()"> -->
+                <div class="userContent"
+                [ngClass]="( (chatInfo?.participants_names && chatInfo.participants_uid) || (selectedGroupNames.length === 0 && groupSelectedUsers.length === 0) ) ? 'align-self-center' : ''"
+                [style.height]="!((chatInfo?.participants_names && chatInfo.participants_uid) || (selectedGroupNames.length === 0 && groupSelectedUsers.length === 0)) ? '55px' : 'unset'"
+                 (click)="toggleGroupDetails()">
+                <h2 class="mt-0"><a>
+                  {{ (chatInfo?.groupName) | titlecase}}
+                </a>
+                  <!-- <span class="align-self-center ml-2 mt-1 d-inline-block userStateMain" *ngIf="reciever"
+                    [title]="reciever?.status"
+                    [ngClass]="{'online' : reciever?.status === 'online', 'away' : reciever?.status === 'away' }"></span> -->
+                </h2>
+                <p class="text-capitalize" style="font-size: small;">{{ !grouping ? getGrpMemNames(chatInfo?.participants_names) : getGrpMemNames(selectedGroupNames) }}</p>
+                <p style="font-size: smaller;">
+                  <!-- <span>{{ basicUserDetails?.map.userBasicDetailsVos[0].companyOrUniversityName }}</span> -->
+                  <span *ngIf="groupSelectedUsers.length === 0" >{{ chatInfo.participants_uid.length }} participants</span>
+                  <span *ngIf="groupSelectedUsers.length !== 0" >{{ groupSelectedUsers.length }} participants selected </span>
+                </p>
+              </div>
+              <div class="userContentActions" *ngIf="chatInfo">
+                <svg viewBox="0 0 24 24" (click)="archiveChat()" *ngIf="!chatInfo?.archivedBy?.includes(sender.uid)">
+                  <title>Bookmark</title>
+                  <g fill="none" fill-rule="evenodd">
+                    <path d="M0 0h24v24H0z"></path>
+                    <path stroke="currentColor" stroke-width="2" d="M6 4.106h12v16l-6-5-6 5z"></path>
+                  </g>
+                </svg>
+                <svg viewBox="0 0 24 24" (click)="unArchiveChat()" *ngIf="chatInfo?.archivedBy?.includes(sender.uid)">
+                  <!-- <title>Unarchive</title> -->
+                  <g fill="none" fill-rule="evenodd">
+                    <path d="M0 0h24v24H0z"></path>
+                    <path stroke="currentColor" stroke-width="2" fill="currentColor" d="M6 4.106h12v16l-6-5-6 5z"></path>
+                  </g>
+                </svg>
+                <svg viewBox="0 0 24 24" (click)="openDeleteConfirmWindow(deleteConfirmModal)">
+                  <title>Delete Chat</title>
+                  <g fill="none" fill-rule="evenodd">
+                    <path d="M0 0h24v24H0z"></path>
+                    <path d="M5 5h15v2h-1v15H5V6.999L4 7V5h1zm2 2v13h10V7H7zm4 2v9H9V9h2zm4 0v9h-2V9h2zm-1-7v2h-4V2h4z"
+                      fill="currentColor" fill-rule="nonzero"></path>
+                  </g>
+                </svg>
+
+                <ng-template #deleteConfirmModal>
+                  <div class="modal-body">
+                    <p class="font-weight-bold">Delete this chat?</p>
+                    <p>If you delete this conversation, all of the messages there will be permanently deleted. Really
+                      delete?</p>
+                    <div class="mt-4 tr">
+                      <button type="button" class="btn btn-sm btn-default" (click)="deleteChat()">Delete</button>
+                      <button type="button" class="btn btn-sm btn-primary" (click)="modalRef.hide()">Cancel</button>
+                    </div>
+                  </div>
+                </ng-template>
+
+                <!--<svg viewBox="0 0 24 24" [matMenuTriggerFor]="reportMenu">
+                      <g fill="none" fill-rule="evenodd">
+                        <path d="M0 0h24v24H0z"></path>
+                        <path d="M5 10a2 2 0 110 4 2 2 0 010-4zm14 0a2 2 0 110 4 2 2 0 010-4zm-7 0a2 2 0 110 4 2 2 0 010-4z"
+                          fill="currentColor" fill-rule="nonzero"></path>
+                      </g>
+                    </svg>
+
+                    <mat-menu #reportMenu="matMenu" xPosition="before">
+                      <button mat-menu-item>Report as spam or misuse</button>
+                    </mat-menu>-->
+
+              </div>
+            </div>
+          </div>
+
+        </header>
+      </div>
+      <!--<app-conversation-header *ngIf="room && chatInfo" [scrollTop]="scrollMe.scrollHeight"  [chatInfo]="chatInfo"></app-conversation-header>-->
+    </div>
+
+    <div class="row">
+      <div class="bg-success p-1 position-absolute text-white w-100" style="z-index: 1;" *ngIf="showBookMarkStatus">
+        <p class="mx-3 my-0"> {{ chatInfo?.archivedBy?.includes(sender.uid) ? 'Added to bookmarks' : 'Removed from bookmarks' }} </p>
+      </div>
+
+      <div class="bg-success p-1 position-absolute text-white w-100" style="z-index: 1;" *ngIf="addOnUserinGroup">
+        <p class="mx-3 my-0"> {{ 'User Added Successfully' }} </p>
+      </div>
+      <div class="bg-success p-1 position-absolute text-white w-100" style="z-index: 1;" *ngIf="deleteUserinGroup">
+        <p class="mx-3 my-0"> {{ 'User Deleted Successfully' }} </p>
+      </div>
+      <div class="col-12 chatBody" #scrollMe [scrollTop]="scrollMe.scrollHeight">
+        <div *ngIf="reciever === null && !loadingMessages && !showContacts ">
+          <div style="width: 725px; margin: auto; height: calc(100vh - 287px); text-align: center; vertical-align: middle; display: table-cell;">
+            <svg height="110px" width="102px" viewBox="0 0 114 106" version="1.1" style="fill-rule: evenodd; clip-rule: evenodd; stroke-linecap: round; stroke-linejoin: round;">
+              <g transform="matrix(1,0,0,1,2,2)">
+                <g transform="matrix(-1,0,0,1,73.8356,0)">
+                  <path d="M65.204,3C68.293,3 70.822,5.446 70.822,8.435L70.822,50.867C70.822,53.856 68.293,56.3 65.204,56.3L55.391,56.3L55.391,70.5L40.374,56.3L8.632,56.3C5.542,56.3 3.014,53.856 3.014,50.867L3.014,8.435C3.014,5.446 5.542,3 8.632,3L65.204,3Z" style="fill: white;"></path>
+                </g>
+                <path d="M45.205,4.5C51.846,5.903 50.899,23.133 50.959,30L63.288,30L63.288,9.826C63.288,6.897 60.834,4.5 57.837,4.5L45.205,4.5Z" style="fill: rgb(222, 234, 239);"></path>
+                <path d="M104.382,33C107.471,33 110,35.446 110,38.435L110,80.867C110,83.856 107.471,86.3 104.382,86.3L93.062,86.3L93.062,102L75.032,86.3L47.81,86.3C44.721,86.3 42.192,83.856 42.192,80.867L42.192,38.435C42.192,35.446 44.721,33 47.81,33L104.382,33Z" style="fill: rgb(127, 186, 186); stroke: rgb(127, 186, 186); stroke-width: 3;"></path>
+                <path d="M67.808,25.5L67.808,5.435C67.808,2.444 65.279,0 62.19,0L5.618,0C2.529,0 0,2.444 0,5.435L0,46.5C0,49.489 2.938,52.5 6.027,52.5L15.068,52.5L15.068,69L31.644,52.5L34.658,52.5" style="fill: none; stroke: rgb(59, 85, 106); stroke-width: 3;"></path>
+                <path d="M54.247,48L94.932,48" style="fill: none; stroke: rgb(254, 254, 254); stroke-width: 3;"></path>
+                <path d="M54.247,58.5L97.945,58.5" style="fill: none; stroke: rgb(254, 254, 254); stroke-width: 3;"></path>
+                <path d="M54.247,69L76.849,69" style="fill: none; stroke: rgb(254, 254, 254); stroke-width: 3;"></path>
+                <path d="M12.055,13.5L52.74,13.5" style="fill: none; stroke: rgb(54, 85, 104); stroke-width: 3;"></path>
+                <path d="M12.055,24L55.753,24" style="fill: none; stroke: rgb(54, 85, 104); stroke-width: 3;"></path>
+                <path d="M12.055,34.5L34.658,34.5" style="fill: none; stroke: rgb(54, 85, 104); stroke-width: 3;"></path>
+              </g>
+            </svg>
+            <div>
+              <h4 class="font-weight-bold mb-3">Say hi!</h4>
+              <p class="h1title m-auto text-muted width_234px">Message your friends and colleagues to find out what's new with them.</p>
+              <button class="btn mt-3 px-5 rounded-pill" style="background-color: #dedede; color: #244357;" (click)="toggleNewContact()">
+                <svg style="width: 18px; height: 18px;" viewBox="0 0 24 24">
+                  <g fill="none" fill-rule="evenodd">
+                    <path d="M0 0h24v24H0z"></path>
+                    <path
+                      d="M12 3v2H5v14h14v-8h2v10H3V3h9zm6.02-1.2l4.243 4.243-9.965 9.965-4.177-.066-.065-4.177L18.02 1.8zm0 2.828l-7.951 7.953.022 1.392 1.392.022 7.952-7.952-1.414-1.415z"
+                      fill="currentColor" fill-rule="nonzero"></path>
+                  </g>
+                </svg> New</button>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="reciever === null && loadingMessages && !showContacts"
+          class="d-flex justify-content-center align-items-center">
+          <!-- <div class="spinner-border text-primary" role="status">
+            <span class="sr-only">Loading...</span>
+          </div> -->
+          <div>
+            <div style="margin: auto; height: calc(100vh - 287px); text-align: center; vertical-align: middle; display: table-cell;">
+              <all-loaders></all-loaders>
+            </div>
+          </div>
+        </div>
+
+        <!-- User Connection Timestamp starts-->
+        <!-- <div *ngIf="reciever && allMessages.length !== 0"
+        class="d-flex justify-content-center align-items-center">
+            <ul>
+              <li class="dateList">Jan 30, 2021</li>
+              <li class="dateList">You're now connected on Gradsiren.</li>
+            </ul>
+        </div> -->
+        <!--User Connection Timestamp ends-->
+
+        <ul class="" *ngIf="(!showContacts || newChatId) && reciever">
+          <!-- <div class="presentational-quick-actions-quickActions-cbdc018c"></div> -->
+          <li class="messageContainer" *ngFor="let message of allMessages; let index = index; let first = first; let last = last"
+            [ngClass]="{'currentUser': message.align === 'right', 'pb-5' : last, 'margin_top_1px' : !(!message.deleted && !first && allMessages[index - 1].time !== message.time)}">
+
+            <div class="chat-day-title" *ngIf="first">
+              <span class="title">{{ message.before_time }}</span>
+            </div>
+            <div class="chat-day-title" *ngIf="!first && allMessages[index - 1].before_time !== message.before_time">
+              <span class="title">{{ message.before_time }}</span>
+            </div>
+
+            <p class="messageTime smallerFont mb-1 mr-4" *ngIf="!message.deleted && first">{{ message.time }}</p>
+            <p class="messageTime smallerFont mb-1 mr-4"
+            *ngIf="!message.deleted && !first && allMessages[index - 1].time !== message.time">{{ message.time }}</p>
+            <p class="messageTime smallerFont mb-1 mr-4"
+            *ngIf="!message.deleted && !first && allMessages[index - 1].time === message.time && allMessages[index - 1].sender !== message.sender ">{{ message.time }}</p>
+
+            <div class="message" *ngIf="!message.deleted" inViewport
+            [inViewportOptions]="{ threshold: [0] }"
+            (inViewportAction)="onIntersectMessage(message, $event)">
+              <span *ngIf="message.align === 'right'" class="material-icons md-18 downArrow" #menuOpen="matMenuTrigger" [ngClass]="{'matSate' : menuOpen.menuOpen}" [matMenuTriggerFor]="currentUserMenu">more_vert</span>
+              <a *ngIf="message.align === 'left'" target="_blank">
+                <div class="imgDivWrapper">
+                  <div class="imgDiv border rounded-circle overflow-hidden">
+                    <!--<img src="assets/img/default-user.png" [title]="reciever?.name | titlecase"
+                      *ngIf="reciever.profileImage === 'null'">
+                    <img [src]="reciever.profileImage" [title]="reciever?.name | titlecase"
+                      *ngIf="reciever.profileImage !== 'null'">-->
+                    <img src="assets/img/default-user.png" [title]="reciever?.name | titlecase"
+                      *ngIf="reciever.profilePicture === 'null' || reciever.profileImage === 'null'">
+                    <img [src]="reciever.profilePicture || reciever.profileImage" [title]="reciever?.name | titlecase"
+                      *ngIf="reciever.profilePicture !== 'null' || reciever.profileImage !== 'null'">
+                  </div>
+                </div>
+              </a>
+              <div class="messageBubble" [ngClass]="{'matSate' : matMenuState}" *ngIf="!message.forwardMsg">
+                <!-- <i class="fa fa-angle-down font-weight-bold downArrow" aria-hidden="true" *ngIf="message.align === 'left'" [matMenuTriggerFor]="leftManu"></i>
+                <i class="fa fa-angle-down font-weight-bold downArrow" aria-hidden="true" *ngIf="message.align === 'right'" [matMenuTriggerFor]="currentUserMenu"></i> -->
+                <div *ngIf="chatInfo?.isGroupChat === true" ><strong>{{ message.sender['name'] }}</strong></div>
+                <div *ngIf="message.files.length !== 0">
+                  <div class="d-flex" *ngFor="let file of message.files">
+                    <div class="iconDiv mr-3">
+                      <i *ngIf="file.type.split('/')[0] === 'image'" class="fa fa-2x fa-file-image-o"
+                        aria-hidden="true"></i>
+                      <i *ngIf="file.name.split('.')[1] === 'pdf'" class="fa fa-2x fa-file-pdf-o" aria-hidden="true"></i>
+                      <i *ngIf="file.name.split('.')[1] === 'doc' || file.name.split('.')[1] === 'docx' || file.name.split('.')[1] === 'txt'" class="fa fa-2x fa-file-text-o" aria-hidden="true"></i>
+                      <i *ngIf="file.name.split('.')[1] === 'zip'" class="fa fa-2x fa-file-archive-o"
+                        aria-hidden="true"></i>
+                      <i *ngIf="file.type.split('/')[0] === 'audio'" class="fa fa-2x fa-file-audio-o"
+                        aria-hidden="true"></i>
+                      <i *ngIf="file.type.split('/')[0] === 'video'" class="fa fa-2x fa-file-video-o"
+                        aria-hidden="true"></i>
+                      <i *ngIf="file.type.split('/')[0] !== 'image' && file.name.split('.')[1] !== 'pdf' && file.name.split('.')[1] !== 'doc' && file.name.split('.')[1] !== 'zip'"
+                        class="fa fa-2x fa-file-0" aria-hidden="true"></i>
+                    </div>
+                    <div>
+                      <div class="m-0">
+                        <a class="pointer bold" [href]="file.file" target="_blank">{{ file.name }}</a>
+                      </div>
+                      <small>Size: {{ file.size }}</small>
+                    </div>
+                  </div>
+                </div>
+                <span>{{ message.message }}</span>
+              </div>
+
+              <span *ngIf="message.align === 'left' && !message.forwardMsg" class="material-icons ml-auto md-18 downArrow" #menuOpen="matMenuTrigger" [ngClass]="{'matSate' : menuOpen.menuOpen}" [matMenuTriggerFor]="leftManu">more_vert</span>
+
+              <div class="messageBubble replayMessage" *ngIf="message.forwardMsg">
+                <div *ngIf="chatInfo?.isGroupChat === true"><strong>{{ message.sender.name }}</strong></div>
+                <div class="font-italic">"{{ message.forwardMsg.message !== '' ? message.forwardMsg.message :
+                  message.forwardMsg.files[0].name }}"</div>
+                <small class="text-black-50">{{ message.forwardMsg.sender.name }}, {{ message.forwardMsg.fwdMsgDate }}</small>
+                <hr class="my-1">
+                <div>{{ message.message}}</div>
+              </div>
+
+              <span *ngIf="message.align === 'left' && message.forwardMsg" class="material-icons ml-auto md-18 downArrow" #menuOpen="matMenuTrigger" [ngClass]="{'matSate' : menuOpen.menuOpen}" [matMenuTriggerFor]="leftManu">more_vert</span>
+
+              <!-- <div>
+                <a *ngIf="message.align === 'left'" class="msgActions" [matMenuTriggerFor]="leftManu">
+                  <mat-icon>more_vert</mat-icon>
+                </a>
+                <a *ngIf="message.align === 'right'" class="msgActions currentUserActios"
+                  [matMenuTriggerFor]="currentUserMenu">
+                  <mat-icon>more_vert</mat-icon>
+                </a>
+              </div> -->
+              <mat-menu #leftManu="matMenu" xPosition="before" overlapTrigger="true" backdropClass="customMatMenuMsg">
+                <button mat-menu-item ngxClipboard [cbContent]="message.message">
+                  <mat-icon fontSet="material-icons-outlined">content_copy</mat-icon>
+                  <span>Copy</span>
+                </button>
+                <button mat-menu-item (click)="forwardMessage(message)">
+                  <mat-icon fontSet="material-icons-outlined">reply</mat-icon>
+                  <span>Quote</span>
+                </button>
+                <!--<button mat-menu-item (click)="deleteMessage(message)">
+                      <mat-icon fontSet="material-icons-outlined">delete</mat-icon>
+                      <span>Delete</span>
+                    </button>-->
+              </mat-menu>
+              <mat-menu #currentUserMenu="matMenu" xPosition="before" overlapTrigger="true" backdropClass="customMatMenuMsg">
+                <button mat-menu-item ngxClipboard [cbContent]="message.message">
+                  <mat-icon fontSet="material-icons-outlined">content_copy</mat-icon>
+                  <span>Copy</span>
+                </button>
+                <button mat-menu-item (click)="forwardMessage(message)">
+                  <mat-icon fontSet="material-icons-outlined">reply</mat-icon>
+                  <span>Quote</span>
+                </button>
+                <button mat-menu-item (click)="deleteMessage(message)">
+                  <mat-icon fontSet="material-icons-outlined">delete</mat-icon>
+                  <span>Delete</span>
+                </button>
+              </mat-menu>
+            </div>
+          </li>
+          <!-- <li class="dateList">Today</li> -->
+          <!--<li class="messageContainer currentUser">
+                      <div class="message">
+                        <div
+                          class="messageBubble">
+                          <span>Hello</span>
+                        </div>
+                      </div>
+                      <p
+                        class="messageTime">
+                        <svg width="16" height="16" viewBox="0 0 16 16">
+                          <path fill="currentColor"
+                            d="M13.579 2.593a.988.988 0 0 0-1.376.243l-5.759 8.225-2.756-2.756a.987.987 0 1 0-1.397 1.397l3.52 3.52a.978.978 0 0 0 .62.353.985.985 0 0 0 1.032-.519l6.362-9.085a.988.988 0 0 0-.243-1.376z">
+                          </path>
+                        </svg>Read 19:58</p>
+                    </li>
+                    <li class="messageContainer currentUser">
+                      <div class="message">
+                        <div
+                          class="messageBubble emoji">
+                          <div
+                            class="emojiMessage">
+                            <span>👋</span>
+                          </div>
+                        </div>
+                      </div>
+                      <p
+                        class="messageTime">
+                        <svg width="16" height="16" viewBox="0 0 16 16">
+                          <path fill="currentColor"
+                            d="M13.579 2.593a.988.988 0 0 0-1.376.243l-5.759 8.225-2.756-2.756a.987.987 0 1 0-1.397 1.397l3.52 3.52a.978.978 0 0 0 .62.353.985.985 0 0 0 1.032-.519l6.362-9.085a.988.988 0 0 0-.243-1.376z">
+                          </path>
+                        </svg>Read 19:58
+                      </p>
+                    </li>-->
+          <!-- <li class="dateList">Yesterday</li>
+                    <li class="dateList">You're now connected on Gradsiren.</li>
+                    <li class="dateList">Nov 30, 2020</li> -->
+        </ul>
+      </div>
+    </div>
+
+    <div class="row footerRow">
+      <div class="col-12 bg-white border-top" style="position: absolute; bottom: 0; border-bottom-right-radius: 10px;">
+        <form *ngIf="groupSelectedUsers.length <= 1" >
+          <div id="emojiWrapper" *ngIf="toggleEmoji && reciever" class="d-block position-absolute"
+            style="left: 0px; bottom: 51px; z-index: 1;">
+            <emoji-mart class="emojiMart" title="Pick your emoji…" (emojiSelect)="emojiSelect($event)" emoji="point_up"
+              exclude="[flags: 'Flags']" [showPreview]="false" isNative="native" [emojiTooltip]="true"></emoji-mart>
+          </div>
+          <div class="row no-gutters align-items-end" style="bottom: 0; padding: 12px 24px 12px 19px;">
+            <!-- <div class="col-1 align-self-center">
+                        <svg viewBox="0 0 24 24">
+                          <g fill="none" fill-rule="evenodd">
+                            <path d="M0 0h24v24H0z"></path>
+                            <path stroke="currentColor" stroke-width="2" d="M12 5v14M19 12H5"></path>
+                          </g>
+                        </svg>
+                    </div> -->
+            <div class="col-1">
+              <label class="d-inline mr-3 pointer" for="validatedCustomFile" style="position: relative; top: -5px;">
+                <svg viewBox="0 0 24 24">
+                  <g fill="none" fill-rule="evenodd">
+                    <path d="M0 24V0h24v24z"></path>
+                    <path
+                      d="M17.5 13a3 3 0 01-6 0V7h2v6a1 1 0 002 0V7a3 3 0 00-6 0v10a3 3 0 006 0h2a5 5 0 01-10 0V7a5 5 0 0110 0z"
+                      fill="currentColor" fill-rule="nonzero"></path>
+                  </g>
+                </svg>
+              </label>
+              <input type="file" class="custom-file-input d-none" [disabled]="!reciever" (change)="fileDetails($event)" id="validatedCustomFile">
+            </div>
+
+
+            <div class="col-1">
+              <svg class="pointer" style="position: relative; top: -5px;" height="16px" viewBox="0 0 16 16" version="1.1"
+                width="16px" id="toggleEmoji" (click)="toggleEmojiFn()">
+                <path fill="#808080"
+                  d="M8,0L8,0c4.4,0,8,3.6,8,8s-3.6,8-8,8s-8-3.6-8-8S3.6,0,8,0z M8,14.9L8,14.9c3.8,0,6.9-3.1,6.9-6.9S11.8,1.1,8,1.1S1.1,4.2,1.1,8S4.2,14.9,8,14.9z">
+                </path>
+                <circle fill="#808080" cx="5.5" cy="6" r="1"></circle>
+                <circle fill="#808080" cx="10.5" cy="6" r="1"></circle>
+                <path fill="none" stroke="#808080" stroke-width="1.1" stroke-linecap="round"
+                  d="M4,9.5C4.7,11.1,6,12,8,12c2,0,3.3-0.8,4-2.5"></path>
+              </svg>
+            </div>
+            <div class="col-9">
+              <div class="messageInputWrapper">
+                <!-- Reply Div Starts -->
+                <div class="alert mb-0 pb-0" *ngIf="forwardMsg && !showAttachmentPreview" style="background-color: #f4f4f5; border-radius: 16px;">
+                  <div class="d-flex">
+                    <span class="ml-auto h4 m-0 pointer" aria-hidden="true" (click)="forwardMsg = null">&times;</span>
+                  </div>
+                  <div class="alert border-bottom px-0 pt-0" role="alert" style="background-color: #f4f4f5;">
+                    <div class="font-italic">"{{ forwardMsg.message !== '' ? forwardMsg.message : forwardMsg.files[0].name
+                      }}"</div>
+                    <small class="text-black-50">{{ forwardMsg.sender.name }}, {{ forwardMsg.fwdMsgDate }}</small>
+                  </div>
+                  <div class="messageInput mr-2">
+                    <div id="inline-editor2" contenteditable="true" class="messageEdit" (focus)="toggleWriting(true)"
+                      (blur)="toggleWriting(false)">
+                    </div>
+                  </div>
+                </div>
+                <!-- Reply Div Ends-->
+
+                <!-- Attachments DIV Starts -->
+                <div class="alert mb-0 pb-0" *ngIf="!forwardMsg && showAttachmentPreview" style="background-color: #f4f4f5; border-radius: 16px;">
+                  <div class="d-flex">
+                    <span class="ml-auto h4 m-0 pointer" aria-hidden="true" (click)="showAttachmentPreview = null">&times;</span>
+                  </div>
+                  <div class="alert border-bottom px-0 pt-0" role="alert" style="background-color: #f4f4f5;">
+                      <div class="messageBubble" *ngIf="fileLoading">
+                        <all-loaders class="smallLoader"></all-loaders>
+                      </div>
+                    <div *ngIf="!fileLoading">
+                      {{ showAttachmentPreview.fileName }} <br>  ({{ showAttachmentPreview.fileSize }})
+                    </div>
+                  </div>
+                  <div class="messageInput mr-2">
+                    <div id="inline-editor2" contenteditable="true" class="messageEdit" (focus)="toggleWriting(true)"
+                      (blur)="toggleWriting(false)">
+                    </div>
+                  </div>
+                </div>
+    <!-- Attachments DIV Ends -->
+
+                <div class="messageInput mr-2" *ngIf="!forwardMsg && !showAttachmentPreview">
+                  <div id="inline-editor2" [attr.contenteditable]="true" class="messageEdit" (focus)="toggleWriting(true)"
+                    (blur)="toggleWriting(false)" (keyup.enter)="msgOnEnter($event)">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-1 tr">
+              <button class="btn btn-sm rounded-pill btn-light sendBtn text-black-50"
+                style="position: relative; top: 0px; left: 10px; font-size: 14px !important;" [disabled]="!reciever"
+                [ngClass]="{'active': sendActive === true && (reciever || newChatId) }" (click)="sendMsg()">Send</button>
+            </div>
+          </div>
+        </form>
+
+        <div *ngIf="groupSelectedUsers.length > 1">
+          <!-- <div class="col-9"> -->
+              <input name="group-name" type="text" [value]="groupName | titlecase" (change)="groupName=$event.target.value">
+          <!-- </div> -->
+          <!-- <div class="col-1 tr"> -->
+            <button class="btn btn-sm rounded-pill btn-light sendBtn text-black-50"
+              [ngClass]="{'active': sendActive === true && (reciever || newChatId) }" (click)="createGroup()">Create Group</button>
+          <!-- </div> -->
+        </div>
+      </div>
+    </div>
