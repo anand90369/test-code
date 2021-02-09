@@ -8,11 +8,11 @@ import { AngularFireDatabase } from 'angularfire2/database';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { AngularFireStorage } from 'angularfire2/storage';
 import * as moment from 'moment';
-import * as momentTimezone from 'moment-timezone';
 import { map, switchMap, take } from 'rxjs/operators';
-import { ChatService } from '../../../../../providers/chat.service';
+import { ChatService } from '../../../services/chat.service';
 import { SubSink } from 'subsink';
 import * as firebase from 'firebase/app';
+import 'firebase/firestore'
 import { combineLatest, Observable, of } from 'rxjs';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap';
 

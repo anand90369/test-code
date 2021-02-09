@@ -1,14 +1,9 @@
 import { DOCUMENT, isPlatformBrowser } from '@angular/common';
 import { Component, Inject, OnDestroy, OnInit, PLATFORM_ID, Renderer2, OnChanges, ViewChild } from '@angular/core';
 
-import { NotificationsallService } from 'app/providers/notifications.service';
-import { ChatService } from 'app/providers/chat.service';
+import { ChatService } from '../../services/chat.service';
 import { takeUntil, debounceTime, distinctUntilChanged, map, switchMap, take } from 'rxjs/operators';
 import { ReplaySubject, combineLatest, Observable, of, Subject } from 'rxjs';
-import { Store } from '@ngrx/store';
-import { AppState } from 'app/core/store/app.state';
-import { JsProfileService } from 'app/jobseeker/providers/js-profile.service';
-import { ShowerrorsService } from 'app/shared/providers/showerrors.service';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { AngularFirestore, AngularFirestoreDocument } from 'angularfire2/firestore';
 import * as firebase from 'firebase/app';
@@ -16,8 +11,7 @@ import { AngularFireStorage } from '@angular/fire/storage';
 import 'firebase/database';
 import { SubSink } from 'subsink';
 import * as moment from 'moment';
-import * as momentTimezone from 'moment-timezone';
-import { ResponsiveService } from 'app/responsive.service';
+import { ResponsiveService } from '../../services/responsive.service';
 
 @Component({
   selector: 'js-messages-home',
@@ -81,30 +75,29 @@ export class JsMessagesHomeComponent implements OnInit, OnDestroy, OnChanges {
 
 
   constructor(@Inject(DOCUMENT) private document: Document, private renderer: Renderer2, public fsDB: AngularFireDatabase,
-    @Inject(PLATFORM_ID) private platformId: Object, public notifications: NotificationsallService,
-    private angularFirestore: AngularFirestore, private store: Store<AppState>, public chatService: ChatService,
-    private storage: AngularFireStorage, public device: ResponsiveService, private profileser: JsProfileService,
-    public snack: ShowerrorsService,
+    @Inject(PLATFORM_ID) private platformId: Object,
+    private angularFirestore: AngularFirestore, public chatService: ChatService,
+    private storage: AngularFireStorage, public device: ResponsiveService
   ) {
     console.log(this.device.findDevice());
     this.isMobile = this.device.findDevice() === 'mobile' ? true : false;
 
-    this.store.select('userState').subscribe(res => {
-      this.userAuthenticated = res.authenticated;
-      if (this.userAuthenticated !== true) {
-        console.log('User state', this.userAuthenticated);
-        firebase.database().ref('Users/' + this.loggedUserDetails.uid + '/status').set('offline');
-        this.angularFirestore.collection('users').doc(this.loggedUserDetails.uid).set({
-          roomId: null,
-          type: 'user'
-        }, { merge: true });
-        // this.angularFirestore.collection('UserDetails').doc(this.loggedUserDetails.uid).update({'status': "away"});
-        localStorage.removeItem('fbUser');
-        localStorage.removeItem('status');
-        localStorage.removeItem('loggedUser');
-        localStorage.removeItem('fbUserUid');
-      }
-    });
+    // this.store.select('userState').subscribe(res => {
+    //   this.userAuthenticated = res.authenticated;
+    //   if (this.userAuthenticated !== true) {
+    //     console.log('User state', this.userAuthenticated);
+    //     firebase.database().ref('Users/' + this.loggedUserDetails.uid + '/status').set('offline');
+    //     this.angularFirestore.collection('users').doc(this.loggedUserDetails.uid).set({
+    //       roomId: null,
+    //       type: 'user'
+    //     }, { merge: true });
+    //     // this.angularFirestore.collection('UserDetails').doc(this.loggedUserDetails.uid).update({'status': "away"});
+    //     localStorage.removeItem('fbUser');
+    //     localStorage.removeItem('status');
+    //     localStorage.removeItem('loggedUser');
+    //     localStorage.removeItem('fbUserUid');
+    //   }
+    // });
 
     this.searchUsers$.pipe(
       map((e: any) => e.replace(/ /g, '')),
@@ -157,7 +150,8 @@ export class JsMessagesHomeComponent implements OnInit, OnDestroy, OnChanges {
       this.renderer.addClass(this.document.body, 'noScroll');
     }
 
-    this.loggedUserDetails.uid = localStorage.getItem('fbUserUid');
+    // this.loggedUserDetails.uid = localStorage.getItem('fbUserUid');
+    this.loggedUserDetails.uid = 'nXysJb8FB4QfFQxgbsvThQtGSey1';
     console.log('Logged Details', this.loggedUserDetails);
     if (this.loggedUserDetails.uid) {
 
@@ -222,25 +216,25 @@ export class JsMessagesHomeComponent implements OnInit, OnDestroy, OnChanges {
       // });
 
 
-      this.notifications.userdata.pipe(takeUntil(this.destroyed$)).subscribe(res => {
-        if( res && res.userDetailsVo) {
-          this.loggedUserDetails.imagePath = res.userDetailsVo.imagePath;
-          this.loggedUserDetails.encodedImagePath = res.userDetailsVo.encodedImagePath;
-          console.log('Res', this.loggedUserDetails);
-          // var imageUrl = this.snack.getJsImage(this.loggedUserDetails.encodedImagePath, 'assets/img/default-user.png');
-          // snack.getJsImage(loggedUserDetails.encodedImagePath, 'assets/img/default-user.png')
-          var imageUrl = this.notifications.prepareimageforcertification(this.loggedUserDetails.encodedImagePath)
-          console.log('imageUrl', imageUrl);
-          if (this.loggedUserDetails.imagePath !== null) {
-            firebase.database().ref('Users/' + this.loggedUserDetails.uid + '/profileImage').set(imageUrl);
-            // this.angularFirestore.collection('UserDetails').doc(this.loggedUserDetails.uid).update({'profileImage': imageUrl});
+      // this.notifications.userdata.pipe(takeUntil(this.destroyed$)).subscribe(res => {
+      //   if( res && res.userDetailsVo) {
+      //     this.loggedUserDetails.imagePath = res.userDetailsVo.imagePath;
+      //     this.loggedUserDetails.encodedImagePath = res.userDetailsVo.encodedImagePath;
+      //     console.log('Res', this.loggedUserDetails);
+      //     // var imageUrl = this.snack.getJsImage(this.loggedUserDetails.encodedImagePath, 'assets/img/default-user.png');
+      //     // snack.getJsImage(loggedUserDetails.encodedImagePath, 'assets/img/default-user.png')
+      //     var imageUrl = this.notifications.prepareimageforcertification(this.loggedUserDetails.encodedImagePath)
+      //     console.log('imageUrl', imageUrl);
+      //     if (this.loggedUserDetails.imagePath !== null) {
+      //       firebase.database().ref('Users/' + this.loggedUserDetails.uid + '/profileImage').set(imageUrl);
+      //       // this.angularFirestore.collection('UserDetails').doc(this.loggedUserDetails.uid).update({'profileImage': imageUrl});
 
-          } else {
-            firebase.database().ref('Users/' + this.loggedUserDetails.uid + '/profileImage').set("null");
-            // this.angularFirestore.collection('UserDetails').doc(this.loggedUserDetails.uid).update({'profileImage': "null"});
-          }
-        }
-      });
+      //     } else {
+      //       firebase.database().ref('Users/' + this.loggedUserDetails.uid + '/profileImage').set("null");
+      //       // this.angularFirestore.collection('UserDetails').doc(this.loggedUserDetails.uid).update({'profileImage': "null"});
+      //     }
+      //   }
+      // });
     }
   }
 
@@ -416,8 +410,8 @@ export class JsMessagesHomeComponent implements OnInit, OnDestroy, OnChanges {
         this.showContacts = true;
       }
       if(this.initialLoad === true && !this.backload && (this.usersRecentList &&  this.usersRecentList.length !== 0) ) {
-        console.log('Latest User', this.usersRecentList[0]);
-        this.showChat(this.usersRecentList[0]);
+        // console.log('Latest User', this.usersRecentList[0]);
+        // this.showChat(this.usersRecentList[0]);
         this.initialLoad = false;
       }
       this.backload = false;
@@ -501,7 +495,7 @@ export class JsMessagesHomeComponent implements OnInit, OnDestroy, OnChanges {
     }
 
 
-    const latestChat = docs[0];
+    const latestChat = docs[0] || [];
     console.log('User', user, 'latest', latestChat.data());
 
     return { id: latestChat.id, ...latestChat.data() }

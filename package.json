@@ -25,6 +25,7 @@
     "firebase": "^8.2.6",
     "moment": "^2.29.1",
     "ng-in-viewport": "^6.1.5",
+    "ngx-bootstrap": "^6.2.0",
     "ngx-clipboard": "^14.0.1",
     "rxjs": "~6.5.5",
     "subsink": "^1.0.2",
